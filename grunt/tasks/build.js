@@ -26,10 +26,6 @@ var taskConfig = function(grunt) {
     if (target === 'deploy') {
       return grunt.task.run(['buildcontrol:deploy'])
     }
-
-    if (target === 'pages') {
-      return grunt.task.run(['buildcontrol:pages'])
-    }
   })
 }
 
