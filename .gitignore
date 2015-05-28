@@ -16,4 +16,11 @@ bower_components/
 build/
 dist/
 .tmp
+<<<<<<< HEAD
 >>>>>>> Setup
+=======
+.grunt
+server/config/secrets.js
+.DS_Store
+.yo-rc.json
+>>>>>>> setup
