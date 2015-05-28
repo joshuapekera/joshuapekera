@@ -16,7 +16,7 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="styles/main.css">
     <!-- build:js(client) scripts/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
@@ -39,6 +39,6 @@
       <!-- endbower -->
     <!-- endbuild -->
 
-    <script src="/scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
   </body>
 </html>
