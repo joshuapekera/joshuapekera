@@ -1,0 +1,18 @@
+{
+  "generator-yeogurt": {
+    "config": {
+      "projectName": "joshuapekera.com",
+      "versionControl": "git",
+      "useServer": false,
+      "singlePageApplication": false,
+      "htmlOption": "swig",
+      "jsOption": "browserify",
+      "cssOption": "less",
+      "useJsdoc": false,
+      "useKss": true,
+      "useDashboard": true,
+      "useTesting": false
+    },
+    "version": "0.14.5"
+  }
+}

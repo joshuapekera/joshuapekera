@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules
 *.log
 dist
@@ -7,3 +8,12 @@ client/bower_components
 server/config/secrets.js
 .DS_Store
 .yo-rc.json
+=======
+client/bower_components/
+node_modules/
+bower_components/
+*.log
+build/
+dist/
+.tmp
+>>>>>>> Setup
