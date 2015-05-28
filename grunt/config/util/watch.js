@@ -72,13 +72,13 @@ var taskConfig = function(grunt) {
       files: [
         '<%= yeogurt.client %>/*.{ico,png,txt}',
         '<%= yeogurt.tmp %>/**/*.html',
-        '<%= yeogurt.tmp %>/styles/**/*.{css,ttf,otf,woff,svg,eot}',
+        '<%= yeogurt.tmp %>/styles/**/*.{css,ttf,otf,woff,woff2,svg,eot}',
         '<%= yeogurt.tmp %>/scripts/**/*.js',
         '<%= yeogurt.client %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
       ]
     }
   };
-  
+
   // Documentation specific configuration
   var docsConfig = {
     swig: {
@@ -120,7 +120,7 @@ var taskConfig = function(grunt) {
     }));
     grunt.task.run('watch');
   });
-  
+
 
 };
 

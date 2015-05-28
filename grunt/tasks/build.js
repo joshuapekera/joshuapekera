@@ -5,21 +5,32 @@
 'use strict';
 
 var taskConfig = function(grunt) {
-  grunt.registerTask('build', 'Build a production ready version of your site.', [
-    'clean:dist',
-    'injector',
-    'wiredep',
-    'copy:dist',
-    'concurrent',
-    'useminPrepare',
-    'concat:generated',
-    'cssmin',
-    'autoprefixer:dist',
-    'usemin',
-    'htmlmin:dist',
-    'uglify',
-    'clean:tmp'
-  ]);
-};
+  grunt.registerTask('build', 'Build a production ready version of your site.', function(target) {
+
+    grunt.task.run([
+      'clean:dist',
+      'injector',
+      'wiredep',
+      'copy:dist',
+      'concurrent',
+      'useminPrepare',
+      'concat:generated',
+      'cssmin',
+      'autoprefixer:dist',
+      'usemin',
+      'htmlmin:dist',
+      'uglify',
+      'clean:tmp'
+    ]);
+
+    if (target === 'deploy') {
+      return grunt.task.run(['buildcontrol:deploy'])
+    }
+
+    if (target === 'pages') {
+      return grunt.task.run(['buildcontrol:pages'])
+    }
+  })
+}
 
 module.exports = taskConfig;
