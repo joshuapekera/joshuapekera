@@ -27,6 +27,8 @@ module.exports = function(grunt) {
     useminPrepare: 'grunt-usemin',
     // translate swig to use the 'grunt-wobble-swig' plugin
     swig: 'grunt-swig-templates',
+
+    // translate buildcontrol to use the 'grunt-build-control' plugin
     buildcontrol: 'grunt-build-control'
   });
 
