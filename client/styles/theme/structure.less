@@ -1,0 +1,409 @@
+/* !Layout
+---------------------------------- */
+body {
+    //overflow-x: hidden;
+    overflow: hidden;
+}
+
+header, #header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+#appcontainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+// Menu Open Styles
+.shift {
+    // container has constrast when menu is open
+    #appcontainer {
+        border-top: 1px solid @white;
+        //filter: blur(20px);
+        //box-shadow: inset 0px 20px 80px 0px rgba(255, 255, 255, .7);
+        //box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, .3);
+    }
+    // give content opacity when menu is open.
+    .content {
+        .opacity(.70);
+    }
+}
+
+#appnav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    overflow: visible;
+    background: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.menu-button {
+    z-index: 3; //menu button should be above everything
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  //background: rgba(255,255,255,0.5);
+  z-index: 2;
+
+  cursor: pointer;
+  // overlay is activated when #appcontainer is set to open
+  display: none;
+  opacity: 0;
+}
+
+#projects, #content{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px;
+    background: @body-bg;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3) ;
+}
+
+#content{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: @body-bg;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+    // overflow allows content to scroll
+    overflow: auto;
+}
+
+// Top Left Info
+.myinfo {
+    display: inline-block;
+	padding-top:30px;
+	padding-left:30px;
+	position:relative;
+	cursor:default;
+	z-index:1;
+	* {
+	    margin:0;
+        padding:0;
+	    .box-sizing(border-box);
+	}
+}
+
+.menuleft .myinfo {
+    display: none;
+    // Special setup for demoing menu position
+    // Hide my info when menu icon is on the left
+}
+
+.menuright .myinfo {
+    display: inline-block;
+}
+
+.myinfo p.title {
+	color:#b7b7b7;
+	margin-top:-1px;
+}
+
+.social li {
+	display:inline-block;
+	padding-top:12px;
+	padding-right: 4px;
+	//opacity:.12;
+	-webkit-transition:opacity .25s ease-out;
+	-moz-transition:opacity .25s ease-out;
+}
+
+.social li a {
+  //cursor: pointer;
+  color: #E0E0E0;
+  transition: all 250ms linear;
+  &:hover {
+    color: black;
+  }
+}
+
+.social li a.dribbble:hover {
+  color: @bc-dribbble-2;
+}
+
+.social li a.linkedin:hover {
+  color: @bc-linkedin;
+}
+
+.social li a.facebook:hover {
+  color: @bc-facebook;
+}
+
+.social li a.twitter:hover {
+  color: @bc-twitter;
+}
+
+.email {
+	padding-left:5px;
+}
+
+/* !Menu
+---------------------------------- */
+
+.menu {
+    position: absolute;
+    color: @link-color;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    top: 50%;
+    z-index: -1;
+    width: @menu-width;
+    @media (max-width: @screen-sm-min) {
+        width: @menu-sm-width;
+    }
+    @media (max-width: @screen-md-min) {
+        width: @menu-md-width;
+    }
+    @media (max-width: @screen-lg-min) {
+        width: @menu-lg-width;
+    }
+}
+
+.menuleft .menu {
+    left: 10%; // menu is on the left
+    .translate(-50%, -50%);
+}
+
+.menuright .menu {
+    right: 10%; //menu is on the right
+    .translate(50%, -50%);
+
+}
+
+.menu a {
+  font-size: @font-size-large + 10;
+  padding-bottom: 0.5em;
+  display: block;
+  text-decoration: none;
+}
+
+.menu a:last-of-type {
+  padding-bottom: 0;
+}
+
+
+/* !Content
+---------------------------------- */
+
+// Shift Menu animation setup
+
+#appcontainer {
+    .scale3D(1, 1, 1);
+    .transition(all 400ms cubic-bezier(0.175, 0.885, 0.335, 1.05));
+    .backface-visibility(hidden);
+}
+
+.menu a {
+    opacity: 0;
+    .transition-transform(~"400ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 300ms ease-in 300ms");
+}
+
+.menuleft #appnav .menu a {
+    //.transform(translate3d(-200%, 0, 0)); // menu is on the left
+    .transform(translateX(-1000px));
+}
+
+.menuright #appnav .menu a {
+    //.transform(translate3d(200%, 0, 0)); // menu is on the right
+    .transform(translateX(1000px));
+}
+
+.menuleft.shift #appcontainer {
+    #shift > .left();
+}
+
+.menuright.shift #appcontainer {
+    #shift > .right();
+}
+
+.shift #appnav .menu a {
+    opacity: 1;
+    .transform(translateX(0px));
+}
+
+// Animate menu items
+
+.menu a:nth-of-type(1){
+    .transition-delay(.00s);
+}
+.menu a:nth-of-type(2){
+    .transition-delay(.04s);
+}
+.menu a:nth-of-type(3){
+    .transition-delay(.08s);
+}
+.menu a:nth-of-type(4){
+    .transition-delay(.12s);
+}
+.menu a:nth-of-type(5){
+    .transition-delay(.16s);
+}
+
+// Overlay is visible when menu is open
+.shift .overlay {
+    display: block;
+    opacity: 1;
+    overflow-x: hidden;
+}
+
+// Animated Menu Button
+.menu-button {
+    position: absolute;
+    top: 0;
+    padding: 10px;
+    line-height: 1em;
+    cursor: pointer;
+}
+
+// Position button relative to container
+.menuleft .menu-button {
+    left: 0;
+    padding: 10px 3px;
+    margin: 20px 0 0 20px;
+    @media (min-width: @screen-sm-min) {
+        padding: 10px 3px;
+        margin: 30px 0 0 30px;
+    }
+}
+
+.menuright .menu-button {
+    right: 0;
+    padding: 10px 3px;
+    margin: 20px 20px 0 0;
+    @media (min-width: @screen-sm-min) {
+        padding: 10px 3px;
+        margin: 30px 30px 0 0;
+    }
+}
+
+
+// Change to watch in slow motion
+@duration: .2s;
+@size: 100%;
+@toggled-size: 1;
+@bg: #449A88;
+@content-bg: #999999;
+
+.menu-button {
+    & *,
+    &:before,
+    &:after {
+        .transform(translate3d(0,0,0));
+    }
+}
+
+.menu-button {
+    .transition(@duration linear);
+    cursor: pointer;
+    user-select: none;
+
+    .navicon:before, .navicon:after {
+        .transition(all @duration/2 linear);
+    }
+    // Animate icon height on hover
+    &:hover {
+        .transition(all @duration linear);
+
+        .navicon:before, .navicon:after {
+            .transition(all @duration/2 linear);
+        }
+
+        .navicon:before {
+            top:8px;
+        }
+        .navicon:after {
+            top: -8px;
+        }
+    }
+}
+
+.navicon {
+    position: relative;
+    width: 28px;
+    height: 2px;
+    background: @content-bg;
+    transition: @duration;
+    border-radius: 2px;
+
+    &:before, &:after {
+        display: block;
+        content: "";
+        height: 2px;
+        width: 28px;
+        background: @content-bg;
+        position: absolute;
+        transition: @duration/2;
+        transition-delay: @duration;
+        border-radius: 2px;
+    }
+
+    &:before {
+        top: 6px;
+    }
+    &:after {
+        top: -6px;
+    }
+}
+
+.open:not(.steps) .navicon:before,
+.open:not(.steps) .navicon:after {
+    top: 0 !important;
+}
+
+.open .navicon:before,
+.open .navicon:after {
+    .transition(@duration);
+}
+
+/* Minus */
+.open {
+    .transform(scale(@toggled-size));
+}
+
+// Open and transition to a X
+.open.x {
+    .navicon {
+        background: transparent;
+
+        &:before {
+            .rotate(-45deg);
+            .transition-delay(1.4s);
+            .transition(.5s ease-in-out);
+        }
+        &:after {
+            .rotate(45deg);
+            .transition-delay(1.4s);
+            .transition(.5s ease-in-out);
+        }
+    }
+}
+
