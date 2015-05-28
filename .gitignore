@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+.DS_Store
 node_modules
 *.log
 dist
@@ -6,21 +6,7 @@ client/bower_components
 .tmp
 .grunt
 server/config/secrets.js
-.DS_Store
-.yo-rc.json
-=======
 client/bower_components/
 node_modules/
-bower_components/
-*.log
 build/
 dist/
-.tmp
-<<<<<<< HEAD
->>>>>>> Setup
-=======
-.grunt
-server/config/secrets.js
-.DS_Store
-.yo-rc.json
->>>>>>> setup
