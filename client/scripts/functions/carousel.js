@@ -9,8 +9,11 @@ var endValue = 0;
 var viewportWidth = 0;
 var viewportHeight = 0;
 var nav;
-var imageWidths = [968, 2400, 800, 2600, 968, 968, 2400, 2400];
-var imageHeights = [1864, 1536, 1220, 2600, 1864, 1864, 1536, 1536];
+var imageWidths = [1080, 2400, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080];
+var imageHeights = [1920, 1536, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920];
+var rightEdgeInput = [400, 812, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400];
+var bottomEdgeInput = [641, 545, 641, 641, 641, 641, 641, 641, 641, 641, 641, 641, 641];
+var bottomPadding = [false, false, false, false, false, false, false, false, false, false, false, false];
 var springSystem = new rebound.SpringSystem();
 var mainSpring = springSystem.createSpring();
 var downSpring = springSystem.createSpring();
@@ -115,6 +118,7 @@ setupMainSpring = function() {
 // Setup panning support for touch and mouse
 setupPanSupport = function() {
     var item = document.getElementById('slides');
+    //if (!item) return null;
     item.addEventListener('touchstart', function(e) {
         var touch = e.touches[0];
         startDragging(touch.pageX);
@@ -189,10 +193,10 @@ endDragging = function() {
 // Calculate .caption postion relative to image size
 layoutCaptions = function() {
     // Distance between the center of the image and its optical right edge in the coordinate system of the native image resolution
-    var rightEdges = [374, 812, 268, 652, 374, 374, 812, 812];
-    var bottomEdges = [580, 545, 390, 642, 580, 580, 545, 545];
+    var rightEdges = rightEdgeInput;
+    var bottomEdges = bottomEdgeInput;
     // Padding added to the bottom in the coordinate system of the slide divs
-    var applyBottomPadding = [false, true, false, false, false, false, true, true];
+    var applyBottomPadding = bottomPadding;
     var slideItems = $('#slides li');
     viewportWidth = slideItems.innerWidth();
     viewportHeight = slideItems.innerHeight();
@@ -258,6 +262,7 @@ selectTabIndex = function(i, animated) {
     }
 };
 
+// Calculate each tab's offset
 navOffsetForIndex = function(i) {
     var offset = 0;
     if (i > 0) {
@@ -268,6 +273,7 @@ navOffsetForIndex = function(i) {
     return offset;
 };
 
+// Calculate the sum of all tab widths
 calculateTabWidths = function() {
     var totalWidth = 0;
     $('#nav li').each(function(i, val) {

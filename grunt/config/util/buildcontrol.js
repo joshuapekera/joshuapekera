@@ -16,12 +16,6 @@ var taskConfig = function(grunt) {
         remote: 'git@github.com:joshuapekera/joshuapekera.git',
         branch: 'gh-pages'
       }
-    },
-    deploy: {
-      options: {
-        remote: 'git@github.com:joshuapekera/joshuapekera.git',
-        branch: 'production'
-      }
     }
   })
 }

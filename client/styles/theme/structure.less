@@ -37,7 +37,7 @@ header, #header {
     }
     // give content opacity when menu is open.
     .content {
-        .opacity(.70);
+        .opacity(.90);
     }
 }
 
@@ -82,7 +82,7 @@ header, #header {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 50px;
+    padding: 20px;
     background: @body-bg;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3) ;
 }
@@ -125,7 +125,7 @@ header, #header {
 }
 
 .myinfo p.title {
-	color:#b7b7b7;
+	color:@theme-gray;
 	margin-top:-1px;
 }
 
@@ -140,7 +140,7 @@ header, #header {
 
 .social li a {
   //cursor: pointer;
-  color: #E0E0E0;
+  color: @theme-gray-light;
   transition: all 250ms linear;
   &:hover {
     color: black;
@@ -172,7 +172,7 @@ header, #header {
 
 .menu {
     position: absolute;
-    color: @link-color;
+    color: @white;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     top: 50%;
     z-index: -1;
@@ -203,7 +203,7 @@ header, #header {
   font-size: @font-size-large + 10;
   padding-bottom: 0.5em;
   display: block;
-  text-decoration: none;
+  color: @white;
 }
 
 .menu a:last-of-type {
@@ -349,21 +349,21 @@ header, #header {
 .navicon {
     position: relative;
     width: 28px;
-    height: 2px;
+    height: 1px;
     background: @content-bg;
     transition: @duration;
-    border-radius: 2px;
+    border-radius: 1px;
 
     &:before, &:after {
         display: block;
         content: "";
-        height: 2px;
+        height: 1px;
         width: 28px;
         background: @content-bg;
         position: absolute;
         transition: @duration/2;
         transition-delay: @duration;
-        border-radius: 2px;
+        border-radius: 1px;
     }
 
     &:before {

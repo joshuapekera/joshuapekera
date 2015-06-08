@@ -20,6 +20,7 @@ var taskConfig = function(grunt) {
           src: [
             'fonts/*.{woff,otf,ttf,eot,svg}',
             'bower_components/fontawesome/**/*.{woff,woff2,ttf,eot,svg}',
+            'bower_components/ionicons/fonts/*.{woff,woff2,ttf,eot,svg}',
           ]}
         ]
     },

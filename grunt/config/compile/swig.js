@@ -13,6 +13,11 @@ var taskConfig = function(grunt) {
       ext: '.html'
     },
     dist: {
+      options: {
+        data: {
+          title: 'Joshua Pekera',
+        }
+      },
       expand: true,
       cwd: '<%= yeogurt.client %>/templates/',
       dest: '<%= yeogurt.dist %>/',

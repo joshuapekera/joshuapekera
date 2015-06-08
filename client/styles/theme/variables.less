@@ -57,7 +57,22 @@
 
 // Theme Colors
 @theme-content:         @white;
+@theme-blue:            #0076FF;
+@theme-blue-light:      #3D92F3;
+@theme-gray:            #b7b7b7;
+@theme-gray-light:      #E0E0E0;
 
+// Alpha Colors
+@white90:               fade(@white, 90%);
+@white80:               fade(@white, 80%);
+@white70:               fade(@white, 70%);
+@white60:               fade(@white, 60%);
+@white50:               fade(@white, 50%);
+@white40:               fade(@white, 40%);
+@white30:               fade(@white, 30%);
+@white20:               fade(@white, 20%);
+@white10:               fade(@white, 10%);
+@white00:               fade(@white, 0%);
 
 //== Structure
 //## Settings for the off-canvas menu and content slideout.
@@ -93,11 +108,11 @@
 @text-color:            @gray-dark;
 
 //** Global textual link color.
-@link-color:            @white;
+@link-color:            @theme-blue-light;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      @theme-blue;
 //** Link hover decoration.
-@link-hover-decoration: underline;
+@link-hover-decoration: none;
 
 
 //== Typography
