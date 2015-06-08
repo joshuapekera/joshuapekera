@@ -1,5 +1,5 @@
 (function($) {
-    'use strict';
+    //'use strict';
     var inputEvents = {},
         funcs = {},
         utils = {},
@@ -29,7 +29,7 @@
             mainSpring: springSystem.createSpring(),
             navigationSpring: springSystem.createSpring()
         }
-    };
+    }
     jQuery.fn.springyCarousel = function(options) {
         var defaults = {
             carouselWrapperSelector: '#wrapper',
@@ -64,8 +64,6 @@
             springyCarouselGlobals.navigation.navOffsets[i] = funcs.navOffsetForIndex(i);
             springyCarouselGlobals.navigation.navItems[i] = val;
         });
-
-        // Setup Rebound Spring
         springs.setupMainSpring(settings.frictionAndTension.carousel.friction, settings.frictionAndTension.carousel.tension, function(xTranslation, progress, spring) {
             springyCarouselGlobals.navigation.nav.style.webkitTransform = 'translate3d(' + xTranslation + 'px, 0, 0)';
             springyCarouselGlobals.navigation.nav.style.MozTransform = 'translate3d(' + xTranslation + 'px, 0, 0)';
@@ -86,10 +84,10 @@
                 var tabOpacity = springs.transitionForProgressInRange(utils.clampedProgress(slideProgress), 0.2, 1, 0);
                 springyCarouselGlobals.navigation.navItems[i].style.opacity = tabOpacity;
                 if (progress.toString().split('.').length === 1 && settings.carouselTransitionComplete) {
-                    settings.carouselTransitionComplete(spring, xTranslation);
+                    settings.carouselTransitionComplete(spring, xTranslation)
                 }
             });
-        });
+        })
         springs.setupNavigationSpring(settings.frictionAndTension.navigation.friction, settings.frictionAndTension.navigation.tension);
         $(settings.slidesSelector).each(function(i, val) {
             val.style.webkitTransform = 'translate3d(' + springyCarouselGlobals.viewport.viewportWidth * i + 'px, 0, 0)';
@@ -100,10 +98,10 @@
         funcs.selectTabIndex(0, false);
         // Setup the supported navigation methods
         if (settings.navigation.keys) {
-            inputEvents.addArrowKeySupport();
+            inputEvents.addArrowKeySupport()
         }
         if (settings.navigation.drag) {
-            inputEvents.addDragSupport($(settings.slidesSelector).parent()[0]);
+            inputEvents.addDragSupport($(settings.slidesSelector).parent()[0])
         }
         // Behavior when the springyCarouselGlobals.navigation.navItems are clicked
         $(settings.navigationSlider).children('li').each(function(i, val) {
@@ -127,11 +125,11 @@
         if (progress < 0) progress = 0;
         else if (progress > 1) progress = 1;
         return progress;
-    };
+    }
     funcs.recalculateSize = function() {
-        springyCarouselGlobals.viewport.viewportWidth = $("#wrapper").innerWidth();
-        springyCarouselGlobals.viewport.viewportHeight = $("#slides li").innerHeight();
-    };
+        springyCarouselGlobals.viewport.viewportWidth = $('#wrapper').innerWidth();
+        springyCarouselGlobals.viewport.viewportHeight = $('#slides li').innerHeight();
+    }
     funcs.calculateNavWidth = function($nav_items) {
         var totalWidth = 0;
         $nav_items.each(function(i, val) {
@@ -143,16 +141,15 @@
             totalWidth += springyCarouselGlobals.navigation.navItemWidths[i];
         });
         return totalWidth;
-    };
+    }
     funcs.navOffsetForIndex = function(i) {
-        var offset = 0;
         if (i > 0) {
-            offset = (springyCarouselGlobals.navigation.navItemWidthsRunningSum[i - 1] + (springyCarouselGlobals.navigation.navItemWidths[i] / 2.0)) * -1;
+            var offset = (springyCarouselGlobals.navigation.navItemWidthsRunningSum[i - 1] + (springyCarouselGlobals.navigation.navItemWidths[i] / 2.0)) * -1;
         } else {
-            offset = ((springyCarouselGlobals.navigation.navItemWidths[i] / 2.0)) * -1;
+            var offset = ((springyCarouselGlobals.navigation.navItemWidths[i] / 2.0)) * -1;
         }
         return offset;
-    };
+    }
     funcs.selectTabIndex = function(i, animated) {
         if (i < 0) {
             i = 0;
@@ -160,13 +157,13 @@
             i = springyCarouselGlobals.navigation.navItems.length - 1;
         }
         if (animated) {
-            springyCarouselGlobals.viewport.viewportWidth = $("#wrapper").innerWidth();
+            springyCarouselGlobals.viewport.viewportWidth = $('#wrapper').innerWidth();
             springyCarouselGlobals.carousel.currentPage = i;
             springyCarouselGlobals.springs.mainSpring.setEndValue(i);
         } else {
             springyCarouselGlobals.springs.mainSpring.setCurrentValue(i);
         }
-    };
+    }
     inputEvents.addArrowKeySupport = function() {
         var initialPress = true;
         var isRubberbanding = false;
@@ -174,9 +171,8 @@
             var currentIndex = springyCarouselGlobals.carousel.currentPage;
             var positionTolerance = 0.001;
             var maxRubberbandDistance = 0.03; // Normalized
-            var inRubberbandableRegion = false;
             if (e.keyCode == 37) { // Left arrow key
-                inRubberbandableRegion = springyCarouselGlobals.springs.mainSpring.getCurrentValue() < positionTolerance;
+                var inRubberbandableRegion = springyCarouselGlobals.springs.mainSpring.getCurrentValue() < positionTolerance;
                 if (inRubberbandableRegion && initialPress) {
                     isRubberbanding = true;
                     springyCarouselGlobals.springs.mainSpring.setEndValue(springyCarouselGlobals.springs.mainSpring.getCurrentValue() - maxRubberbandDistance);
@@ -185,7 +181,7 @@
                     funcs.selectTabIndex(currentIndex - 1, true);
                 }
             } else if (e.keyCode == 39) { // Right arrow key
-                inRubberbandableRegion = springyCarouselGlobals.springs.mainSpring.getCurrentValue() > ((springyCarouselGlobals.navigation.navItems.length - 1) - positionTolerance);
+                var inRubberbandableRegion = springyCarouselGlobals.springs.mainSpring.getCurrentValue() > ((springyCarouselGlobals.navigation.navItems.length - 1) - positionTolerance);
                 if (inRubberbandableRegion && initialPress) {
                     isRubberbanding = true;
                     springyCarouselGlobals.springs.mainSpring.setEndValue(springyCarouselGlobals.springs.mainSpring.getCurrentValue() + maxRubberbandDistance);
@@ -207,7 +203,7 @@
             isRubberBanding = false;
             initialPress = true;
         });
-    };
+    }
     inputEvents.addDragSupport = function(item) {
         item.addEventListener('touchstart', function(e) {
             var touch = e.touches[0];
@@ -236,13 +232,14 @@
         item.addEventListener('mouseleave', function(e) {
             if (springyCarouselGlobals.dragging.isDragging) endDragging();
         }, false);
-    };
+    }
     startDragging = function(x) {
         lastX = x;
         springyCarouselGlobals.dragging.isDragging = true;
-        springyCarouselGlobals.viewport.viewportWidth = $("#wrapper").innerWidth();
+        springyCarouselGlobals.viewport.viewportWidth = $('#wrapper').innerWidth();
         springyCarouselGlobals.springs.mainSpring.setAtRest();
-    };
+        $('#slides').addClass('dragging');
+    }
     continueDragging = function(x) {
         panVelocity = x - lastX;
         lastX = x;
@@ -252,7 +249,7 @@
         if ((currentValue + progress) < 0 || (currentValue + progress) > springyCarouselGlobals.navigation.navItems.length - 1) progress *= 0.5;
         springyCarouselGlobals.springs.mainSpring.setCurrentValue(currentValue + progress);
         springyCarouselGlobals.springs.mainSpring.setAtRest();
-    };
+    }
     endDragging = function() {
         var currentPosition = springyCarouselGlobals.springs.mainSpring.getCurrentValue();
         var restPosition = springyCarouselGlobals.carousel.currentPage;
@@ -270,7 +267,9 @@
         springyCarouselGlobals.springs.mainSpring.setVelocity(normalizedVelocity * 30);
         panVelocity = 0;
         springyCarouselGlobals.dragging.isDragging = false;
-    };
+        $('#slides').removeClass('dragging');
+    }
+
     springs.setupMainSpring = function(friction, tension, callback) {
         springyCarouselGlobals.springs.mainSpring.setSpringConfig(rebound.SpringConfig.fromOrigamiTensionAndFriction(tension, friction));
         springyCarouselGlobals.springs.mainSpring.addListener({
@@ -286,7 +285,7 @@
                 callback(xTranslation, progress, spring);
             }
         });
-    };
+    }
     springs.setupNavigationSpring = function(friction, tension) {
         springyCarouselGlobals.springs.navigationSpring.setSpringConfig(rebound.SpringConfig.fromOrigamiTensionAndFriction(tension, friction));
         springyCarouselGlobals.springs.navigationSpring.addListener({
@@ -297,13 +296,13 @@
                 springyCarouselGlobals.navigation.navItems[springyCarouselGlobals.navigation.downIndex].style.MozTransform = 'scale(' + scale + ')';
             }
         });
-    };
+    }
     springs.transitionForProgressInSteps = function(progress, steps) {
         var transition = -1;
         // Bail if there's fewer than two steps
         if (steps.length < 2) {
-            return transition;
-        }
+            return transition
+        };
         // If the progress is before the beginning of the range, extrapolate from the first and second steps.
         if (progress < 0) {
             transition = springs.transitionForProgressInRange(progress, steps[0], steps[1]);
@@ -315,7 +314,7 @@
             transition = springs.transitionForProgressInRange(normalizedProgress, steps[(steps.length - 2)], steps[(steps.length - 1)]);
         }
         // Supress potential NaNs
-        else if (progress == (steps.length - 1) || progress === 0) {
+        else if (progress == (steps.length - 1) || progress == 0) {
             transition = steps[progress];
         }
         // Otherwise interpolate between steps
@@ -324,11 +323,11 @@
             transition = springs.transitionForProgressInRange(normalizedProgress, steps[Math.floor(progress)], steps[Math.floor(progress) + 1]);
         }
         return transition;
-    };
+    }
     springs.transitionForProgressInRange = function(progress, startValue, endValue) {
         return startValue + (progress * (endValue - startValue));
-    };
+    }
     springs.progressForValueInRange = function(value, startValue, endValue) {
         return (value - startValue) / (endValue - startValue);
-    };
+    }
 }(jQuery));
