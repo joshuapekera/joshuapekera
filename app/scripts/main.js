@@ -28,6 +28,7 @@ FastClick.attach(document.body);
 
   $(window).resize(function(){
 	  springyCarousel.recalculateSize();
+    springyCarousel.layoutCaptions();
 	});
 })(jQuery);
 

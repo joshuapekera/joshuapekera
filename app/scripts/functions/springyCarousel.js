@@ -142,7 +142,7 @@
             });
         });
 
-   /////////////// Show captions
+        //Show captions
         $(settings.captionSelector).each(function(i, val){
             if (settings.captions.show) {
               funcs.layoutCaptions(i, true);
@@ -150,6 +150,7 @@
         });
 
         //declare public methods
+        this.layoutCaptions = funcs.layoutCaptions;
         this.recalculateSize = funcs.recalculateSize;
         this.goToPage = funcs.selectTabIndex;
         return this;
