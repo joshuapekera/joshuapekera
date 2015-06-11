@@ -1,8 +1,6 @@
-(function($) {
-    FastClick.attach(document.body);
-})(jQuery);
+FastClick.attach(document.body);
 
-(function ($) {
+(function($) {
   'use strict';
   // Pretty Menu with Toggle
   var $content = $('body');
@@ -21,10 +19,9 @@
   });
 })(jQuery);
 
-(function ($) {
+(function($) {
   'use strict';
   // spingyCarousel
-/*
   var springyCarousel = $('#wrapper').springyCarousel({
 	    carouselTransitionComplete: function(spring,xTranslation){}
   });
@@ -32,13 +29,9 @@
   $(window).resize(function(){
 	  springyCarousel.recalculateSize();
 	});
-*/
-
-	// Layout Captions
-	//var layoutCaptions = $('.captions').layoutCaptions();
 })(jQuery);
 
-(function ($) {
+(function($) {
 	'use strict';
   var $image = $('#slides li img');
 	$image.attr('draggable','false');
@@ -52,7 +45,7 @@
     prefetch: true,
     pageCacheSize: 4,
     // blacklist anything you dont want targeted
-    blacklist : '',
+    blacklist : '.nss',
     development : false,
     // Runs when a link has been activated
     onStart: {
@@ -86,9 +79,10 @@
         }
     },
     onAfter : function(url, $container, $content) {
-
+        var href = $(this).attr('href');
+        var target= $(this);
+        content.load(href);
     }
   }).data('smoothState');
   //.data('smoothState') makes public methods available
 })(jQuery);
-

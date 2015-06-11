@@ -1,4 +1,4 @@
-(function($) {
+;(function($) {
     //'use strict';
     var inputEvents = {},
         funcs = {},
@@ -25,6 +25,16 @@
             viewportWidth: 0,
             viewportHeight: 0
         },
+        captions: {
+            captionItems: []
+        },
+        imageSize: {
+            imageWidth:[1080, 2400, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080],
+            imageHeight:[1920, 1536, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920],
+            rightEdge:[400, 812, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400],
+            bottomEdge:[641, 545, 641, 641, 641, 641, 641, 641, 641, 641, 641, 641, 641],
+            bottomPadding:[false, false, false, false, false, false, false, false, false, false, false, false],
+        },
         springs: {
             mainSpring: springSystem.createSpring(),
             navigationSpring: springSystem.createSpring()
@@ -35,6 +45,10 @@
             carouselWrapperSelector: '#wrapper',
             slidesSelector: '#slides li',
             navigationSlider: '#nav',
+            captionSelector: '.caption',
+            captions: {
+                show: true
+            },
             navigation: {
                 keys: true,
                 drag: true
@@ -64,6 +78,12 @@
             springyCarouselGlobals.navigation.navOffsets[i] = funcs.navOffsetForIndex(i);
             springyCarouselGlobals.navigation.navItems[i] = val;
         });
+        //set captions
+        var captions = $(settings.captionSelector);
+        captions.each(function(i, val) {
+            springyCarouselGlobals.captions.captionItems[i] = val;
+        });
+
         springs.setupMainSpring(settings.frictionAndTension.carousel.friction, settings.frictionAndTension.carousel.tension, function(xTranslation, progress, spring) {
             springyCarouselGlobals.navigation.nav.style.webkitTransform = 'translate3d(' + xTranslation + 'px, 0, 0)';
             springyCarouselGlobals.navigation.nav.style.MozTransform = 'translate3d(' + xTranslation + 'px, 0, 0)';
@@ -77,6 +97,11 @@
                     var scale = springs.transitionForProgressInRange(slideProgress, 0.6, 1.0);
                     val.style.webkitTransform = 'translate3d(' + x + 'px, 0, 0) scale(' + scale + ')';
                     val.style.MozTransform = 'translate3d(' + x + 'px, 0, 0) scale(' + scale + ')';
+                    // Fade in the caption when nearing rest
+                    if (i < captions.length) {
+                        var captionOpacity = springs.transitionForProgressInRange(slideProgress, -8.0, 1.0);
+                        captions[i].style.opacity = captionOpacity;
+                    }
                 }
                 // Hide the off-screen images so they don't reveal themselves if you resize the browser
                 val.style.opacity = (slideProgress > 0) ? 1.0 : 0.0;
@@ -116,6 +141,14 @@
                 springyCarouselGlobals.springs.navigationSpring.setEndValue(0);
             });
         });
+
+   /////////////// Show captions
+        $(settings.captionSelector).each(function(i, val){
+            if (settings.captions.show) {
+              funcs.layoutCaptions(i, true);
+            }
+        });
+
         //declare public methods
         this.recalculateSize = funcs.recalculateSize;
         this.goToPage = funcs.selectTabIndex;
@@ -163,6 +196,41 @@
         } else {
             springyCarouselGlobals.springs.mainSpring.setCurrentValue(i);
         }
+    }
+    funcs.layoutCaptions = function() {
+        // Distance between the center of the image and its optical right edge in the coordinate system of the native image resolution
+        var rightEdges = springyCarouselGlobals.imageSize.rightEdge;
+        var bottomEdges = springyCarouselGlobals.imageSize.bottomEdge;
+        var bottomPadding = springyCarouselGlobals.imageSize.bottomPadding;
+        var captions = springyCarouselGlobals.captions.captionItems;
+        // Padding added to the bottom in the coordinate system of the slide divs
+        var applyBottomPadding = bottomPadding;
+        var slideItems = $('#slides li');
+        var viewportWidth = slideItems.innerWidth();
+        var viewportHeight = slideItems.innerHeight();
+        $('.caption').each(function(i, val) {
+            captions[i] = val;
+            var scale = funcs.calculateContentScaleForIndex(i);
+            var x = (viewportWidth / 2.0) + rightEdges[i] * scale;
+            var y = ((viewportHeight / 2.0) - (bottomEdges[i] * scale)) * -1;
+            var leftPadding = parseInt($(val).css('padding-left'), 10);
+            if (applyBottomPadding[i]) {
+                y -= leftPadding;
+            }
+            x = Math.round(x);
+            y = Math.round(y);
+            val.style.webkitTransform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
+            val.style.MozTransform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
+            captions[i].style.visibility = "visible";
+        });
+    };
+    funcs.calculateContentScaleForIndex = function(i) {
+        var contentWidth = springyCarouselGlobals.imageSize.imageWidth[i];
+        var contentHeight = springyCarouselGlobals.imageSize.imageHeight[i];
+        var viewportWidth = springyCarouselGlobals.viewport.viewportWidth;
+        var viewportHeight = springyCarouselGlobals.viewport.viewportHeight;
+        var scale = ((viewportWidth / viewportHeight) > (contentWidth / contentHeight)) ? (viewportHeight / contentHeight) : (viewportWidth / contentWidth);
+        return scale;
     }
     inputEvents.addArrowKeySupport = function() {
         var initialPress = true;
@@ -269,7 +337,6 @@
         springyCarouselGlobals.dragging.isDragging = false;
         $('#slides').removeClass('dragging');
     }
-
     springs.setupMainSpring = function(friction, tension, callback) {
         springyCarouselGlobals.springs.mainSpring.setSpringConfig(rebound.SpringConfig.fromOrigamiTensionAndFriction(tension, friction));
         springyCarouselGlobals.springs.mainSpring.addListener({
