@@ -3,15 +3,14 @@
   "private": true,
   "dependencies": {
     "jquery": "~2.1.1",
-    "modernizr": "~2.8.1",
+    "modernizr": "~2.8.2",
+    "fastclick": "~1.0.6",
     "lazysizes": "~1.1.1",
+    "picturefill": "~3.0.0-alpha1",
+    "rebound-js": "~0.0.10",
+    "smoothstate": "~0.7.2",
     "fontawesome": "~4.3.0",
     "bootstrap": "~3.3.4",
-    "modernizr": "~2.8.2",
-    "rebound-js": "~0.0.10",
-    "smoothstate": "~0.5.2",
-    "picturefill": "~3.0.0-alpha1",
-    "fastclick": "~1.0.6",
     "ionicons": "~2.0.1"
   },
   "devDependencies": {

@@ -29,8 +29,10 @@
             captionItems: []
         },
         imageSize: {
-            imageWidth:[1080, 2400, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080],
-            imageHeight:[1920, 1536, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920],
+            //imageWidth:[1080, 2400, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080, 1080],
+            //imageHeight:[1920, 1536, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920],
+            imageWidth:[],
+            imageHeight:[],
             rightEdge:[400, 812, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400],
             bottomEdge:[641, 545, 641, 641, 641, 641, 641, 641, 641, 641, 641, 641, 641],
             bottomPadding:[false, false, false, false, false, false, false, false, false, false, false, false],
@@ -197,13 +199,31 @@
             springyCarouselGlobals.springs.mainSpring.setCurrentValue(i);
         }
     };
+
+    funcs.getImageWidth = function() {
+      var slides = $('#slides img');
+      slides.each(function() {
+        if ($(this).complete){
+          $(this).naturalWidth;
+        } else {
+          console.log('image error');
+        }
+      });
+    };
+
+    funcs.getImageHeight = function() {
+        var slides = $('#slides');
+        var imageHeight = springyCarouselGlobals.imageSize.imageHeight;
+        slides.find('img').get().naturalHeight;
+        return imageHeight(i);
+    };
+
     funcs.layoutCaptions = function() {
         // Distance between the center of the image and its optical right edge in the coordinate system of the native image resolution
         var rightEdges = springyCarouselGlobals.imageSize.rightEdge;
         var bottomEdges = springyCarouselGlobals.imageSize.bottomEdge;
         var bottomPadding = springyCarouselGlobals.imageSize.bottomPadding;
         var captions = springyCarouselGlobals.captions.captionItems;
-        //var $slides = $.fn.springyCarousel.defaults.slidesSelector;
         // Padding added to the bottom in the coordinate system of the slide divs
         var applyBottomPadding = bottomPadding;
         var slideItems = $('#slides li');
@@ -226,13 +246,35 @@
         });
     };
     funcs.calculateContentScaleForIndex = function(i) {
-        var contentWidth = springyCarouselGlobals.imageSize.imageWidth[i];
+        var contentWidth = funcs.getImageWidth();
         var contentHeight = springyCarouselGlobals.imageSize.imageHeight[i];
         var viewportWidth = springyCarouselGlobals.viewport.viewportWidth;
         var viewportHeight = springyCarouselGlobals.viewport.viewportHeight;
         var scale = ((viewportWidth / viewportHeight) > (contentWidth / contentHeight)) ? (viewportHeight / contentHeight) : (viewportWidth / contentWidth);
         return scale;
     };
+    // funcs.calculateContentScaleForIndex = function(i) {
+    //     var contentWidth = springyCarouselGlobals.imageSize.imageWidth[i];
+    //     var contentHeight = springyCarouselGlobals.imageSize.imageHeight[i];
+    //     var viewportWidth = springyCarouselGlobals.viewport.viewportWidth;
+    //     var viewportHeight = springyCarouselGlobals.viewport.viewportHeight;
+    //     var scale = ((viewportWidth / viewportHeight) > (contentWidth / contentHeight)) ? (viewportHeight / contentHeight) : (viewportWidth / contentWidth);
+    //     return scale;
+    // };
+    // funcs.getImageHeight = function() {
+    //     var slideImage = $('#slides li img');
+    //     var imageWidth = springyCarouselGlobals.imageSize.imageWidth;
+    //     var imageHeight = springyCarouselGlobals.imageSize.imageHeight;
+    //     getImageHeight = function(i) {
+    //
+    //       slideImage.each.get(0).naturalHeight;
+    //       return imageHeight[i];
+    //     }
+    //     getImageWidth = function(i) {
+    //       slideImage.each.get(0).naturalWidth;
+    //       return imageWidth[i];
+    //     }
+    // };
     inputEvents.addArrowKeySupport = function() {
         var initialPress = true;
         var isRubberbanding = false;
