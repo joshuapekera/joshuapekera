@@ -1,13 +1,15 @@
 ---
 layout: base-parent.hbs
 ---
-<main id="main" class="coverall">
+<main id="main" class="app cover">
 	{{> navigation }}
-	<div id="appcontainer">
+	<div id="appcontainer" class="appcontainer">
 		<div class="overlay"></div>
-		<div id="appcontent">
+		<div id="appcontent" class="appcontent">
 			{{> header }}
+			<div class="content">
       {{> body }}
+			</div>
 		</div>
 	</div>
 </main>

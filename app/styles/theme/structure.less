@@ -1,70 +1,14 @@
-/* Primary Layout
+/* Site Stuctural Layout
 ---------------------------------- */
-body {
-	overflow: hidden;
+body{
+	overflow-x: hidden;
+	//stop firefox from showing horizontal scroll
 }
-
-#main {
+.app {
 	overflow: auto;
 }
 
-#appcontainer {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 0;
-	width: auto;
-	height: auto;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	//background: @body-bg;
-}
-
-.springy #appcontainer {
-
-	// prevent overflow for rebound slider
-	overflow-y: hidden;
-}
-
-.content {
-	background-color: @body-bg;
-}
-
-.coverall .content {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: auto;
-	height: auto;
-}
-
-
-// Menu Open Styles
-.shift {
-
-	// container has constrast when menu is open
-	#appcontainer {
-		border-top: 1px solid @white;
-		overflow-y: hidden;
-		//background: fade(@body-bg, 90%);
-
-		//filter: blur(20px);
-		//box-shadow: inset 0px 20px 80px 0px rgba(255, 255, 255, .7);
-		//box-shadow: 2px 0 4px 0px rgba(0, 0, 0, 0.2);
-	}
-
-	// give content opacity when menu is open.
-	.content {
-		.opacity(.90);
-	}
-
-}
-
-#appnav {
+.appnav {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -78,6 +22,31 @@ body {
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
+	//visibility: hidden;
+	//.transition(visibility 400ms linear);
+}
+
+.appcontainer {
+	position: relative;
+	// top: 0;
+	// right: 0;
+	// bottom: 0;
+	// left: 0;
+	padding: 0;
+	width: auto;
+	height: auto;
+	background-color: @body-bg;
+	//overflow-x: hidden;
+	overflow-y: scroll;
+	.transition(bacground-color 0ms);
+	// fixes  flickering issue in iOS
+
+	//padding-top:1px;
+	//margin-top:-1px;
+	//-webkit-overflow-scrolling: touch;
+
+	//.backface-visibility(hidden);
+	//.translate3d(0,0,0);
 }
 
 .overlay {
@@ -94,8 +63,7 @@ body {
 	opacity: 0;
 }
 
-header,
-#header {
+.header {
 	position: relative;
 	height: 116px;
 	padding: 20px 20px 0;
@@ -103,34 +71,156 @@ header,
 	@media (min-width: @screen-sm-min) {
 		padding: 30px 30px 0;
 	}
-
 }
 
-.menu-button {
-
-	//z-index: 3; //menu button should be above everything
-}
-
-#projects {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-
-	//box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
-	overflow: hidden;
+.appcontent {
+	height: 100%;
+	width: 100%;
+	background-color: @body-bg;
 }
 
 .content {
-	margin-top: -116px;
-	padding-top: 116px;
-	//background: @body-bg;
+	position: relative;
+	//background-color: @body-bg;
+	// Allow users to select content by default.
 }
 
-.springy .content {
-	margin: 0;
-	padding: 0;
+/* Content Utilities
+-------------------- */
+/* Post Layout */
+.post {
+	.content {
+		// Offset from header in a scrollable layout
+
+	}
+}
+/* Cover Layout */
+.cover {
+	// make objects full width for non scrolling pages that are fullscreen
+	.appcontainer {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		overflow: hidden;
+	}
+	.content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		//width: auto;
+		//height: auto;
+	}
+}
+
+.site-wrapper {
+		display: table;
+		width: 100%;
+		height: 100%;
+		/* For at least Firefox */
+		min-height: 100%;
+
+
+		background-image: url("../images/hero-joshua-lg.jpg");
+		background-repeat:no-repeat;
+		background-position: center;
+		background-size: cover;
+		.backface-visibility(hidden);
+
+		// background-image: url("../images/polygons@2x.jpg");
+		// background-repeat:repeat;
+		// background-position: center;
+		// background-size: 250px 250px;
+}
+
+.site-wrapper-inner {
+		display: table-cell;
+		vertical-align: middle;
+}
+
+.cover-container {
+		margin-right: auto;
+		margin-left: auto;
+}
+
+.cover-inner {
+		padding: 0 20px;
+		text-align: center;
+		.btn-lg {
+				padding: 10px 20px;
+				font-weight: bold;
+		}
+}
+
+.cover-heading {
+	font-weight: 600;
+}
+
+// Mast Footer
+.mastfoot {
+	blockquote {
+		text-align: center;
+		border: none;
+		padding: 0px;
+	}
+	footer {
+		text-align: center;
+		@media (min-width: @screen-sm-min) {
+			//text-align: right;
+		}
+	}
+}
+
+// Affix and center
+@media (min-width: 768px) {
+		/* Pull out the header and footer */
+		.masthead {
+				position: fixed;
+				top: 0;
+		}
+
+		.mastfoot {
+	    position: fixed;
+	    bottom: 0;
+	  }
+
+// Start the vertical centering
+		.site-wrapper-inner {
+				vertical-align: middle;
+		}
+
+// Handle the widths
+		.masthead,
+		.mastfoot,
+		.cover-container {
+				width: 100%;
+				// Must be percentage or pixels for horizontal alignment
+		}
+
+}
+
+@media (min-width: 992px) {
+		.masthead,
+		.mastfoot,
+		.cover-container {
+				width: 700px;
+		}
+}
+
+/* Slider Layout */
+.slider {
+	.appcontainer {
+		// prevent overflow for rebound slider
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
+	.content {
+		margin: 0;
+		padding: 0;
+	}
 }
 
 // Top Left Info
@@ -144,345 +234,60 @@ header,
 		padding: 0;
 		.box-sizing(border-box);
 	}
-
 }
 
-.menuleft .myinfo {
-	display: none;
-
-	// Special setup for demoing menu position
-	// Hide my info when menu icon is on the left
-}
-
-.menuright .myinfo {
-	display: inline-block;
-}
-
-.myinfo p.title {
-	color: @theme-gray;
-	margin-top: -1px;
-}
-
-.myinfo p.name a {
-	color: @black;
-	transition: all 250ms linear;
-	&:hover {
-		color: @link-hover-color;
+// Menu is open
+.shift {
+	.appnav {
+		//visibility: visible;
+		//.transition(visibility 400ms linear);
 	}
-}
 
-.social {
-	display: none;
-	@media (min-width: @screen-sm-min) {
+	.menu {
+		z-index: 1;
+	}
+
+	.overlay {
 		display: block;
+		opacity: 1;
+		overflow-x: hidden;
 	}
 
-}
+	// container has constrast when menu is open
+	.appcontainer {
+		.box-shadow(inset 0 1px 0 0 fade(@white, 50%));
+		//border-top: 1px solid fade(@white, 50%);
+		overflow-y: hidden;
 
-.social li {
-	display: inline-block;
-	padding-top: 12px;
-	padding-right: 4px;
-	a {
-		color: @theme-gray-light;
-		transition: all 250ms linear;
-		&:hover {
-			color: black;
-		}
+		// Remove padding and margins set to fix iOS
+		//padding-top: 0;
+		//margin-top: 0;
 
+		// Remove background when menu is open
+		background-color: transparent;
+
+		//background: fade(@body-bg, 90%);
+		//filter: blur(20px);
+		//box-shadow: inset 0px 20px 80px 0px rgba(255, 255, 255, .7);
+		//box-shadow: 2px 0 4px 0px rgba(0, 0, 0, 0.2);
+	}
+	// give content opacity when menu is open.
+	.appcontent {
+		.opacity(.90);
 	}
 
-}
+	// give content opacity when menu is open.
+	// .content {
+	// 	.opacity(.90);
+	// }
 
-.social li a.dribbble:hover {
-	color: @bc-dribbble-2;
-}
-
-.social li a.linkedin:hover {
-	color: @bc-linkedin;
-}
-
-.social li a.facebook:hover {
-	color: @bc-facebook;
-}
-
-.social li a.twitter:hover {
-	color: @bc-twitter;
-}
-
-.email {
-	padding-left: 5px;
-}
-
-
-/* !Content
----------------------------------- */
-// Shift Menu animation setup
-#appcontainer {
-	.scale3D(1, 1, 1);
-	.transition(all 400ms cubic-bezier(0.175, 0.885, 0.335, 1.05));
-	.backface-visibility(hidden);
-}
-
-.menu a {
-	opacity: 0;
-	.transition-transform(~"400ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 300ms ease-in 300ms");
-}
-
-.menuleft #appnav .menu a {
-
-	//.transform(translate3d(-200%, 0, 0)); // menu is on the left
-	.transform(translateX(-1000px));
-}
-
-.menuright #appnav .menu a {
-
-	//.transform(translate3d(200%, 0, 0)); // menu is on the right
-	.transform(translateX(1000px));
-}
-
-.menuleft.shift #appcontainer {
-	#shift > .left();
-}
-
-.menuright.shift #appcontainer {
-	#shift > .right();
-}
-
-.shift #appnav .menu a {
-	opacity: 1;
-	.transform(translateX(0px));
-}
-
-
-// Animate menu items
-.menu a:nth-of-type(1) {
-	.transition-delay(.00s);
-}
-
-.menu a:nth-of-type(2) {
-	.transition-delay(.04s);
-}
-
-.menu a:nth-of-type(3) {
-	.transition-delay(.08s);
-}
-
-.menu a:nth-of-type(4) {
-	.transition-delay(.12s);
-}
-
-.menu a:nth-of-type(5) {
-	.transition-delay(.16s);
-}
-
-
-// Overlay is visible when menu is open
-.shift .overlay {
-	display: block;
-	opacity: 1;
-	overflow-x: hidden;
-}
-
-
-/* !Menu
----------------------------------- */
-.menu {
-	position: absolute;
-	color: @white;
-	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-	top: 50%;
-	z-index: -1;
-	width: @menu-width;
-	@media (max-width: @screen-sm-min) {
-		width: @menu-sm-width;
-	}
-
-@media (max-width: @screen-md-min) {
-		width: @menu-md-width;
-	}
-
-@media (max-width: @screen-lg-min) {
-		width: @menu-lg-width;
-	}
-
-}
-
-.menuleft .menu {
-	left: 10%; // menu is on the left
-	.translate(-50%, -50%);
-}
-
-.menuright .menu {
-	right: 10%; //menu is on the right
-	.translate(50%, -50%);
-}
-
-.menu a {
-	font-size: @font-size-large + 10;
-	padding-bottom: 0.5em;
-	display: block;
-	color: @white;
-}
-
-.menu a:last-of-type {
-	padding-bottom: 0;
-}
-
-
-// Animated Menu Button
-.menu-button {
-
-	//position: absolute;
-	//top: 0;
-	position: relative;
-	float: right;
-
-	//padding: 10px;
-	line-height: 1em;
-	cursor: pointer;
-	z-index: 3;
-}
-
-
-// Position button relative to container
-.menuleft .menu-button {
-
-	//left: 0;
-	padding: 10px 3px;
-
-	//margin: 20px 0 0 20px;
-	@media (min-width: @screen-sm-min) {
-		padding: 10px 3px;
-
-		//margin: 30px 0 0 30px;
-	}
-
-}
-
-.menuright .menu-button {
-
-	//right: 0;
-	padding: 10px 3px;
-
-	//margin: 20px 20px 0 0;
-	@media (min-width: @screen-sm-min) {
-		padding: 10px 3px;
-
-		//margin: 30px 30px 0 0;
-	}
-
-}
-
-
-// Change to watch in slow motion
-@duration: 0.2s;
-@size: 100%;
-@toggled-size: 1;
-@bg: #449a88;
-@content-bg: #999;
-.menu-button {
-	& *,
-	&:before,
-	&:after {
-		.transform(translate3d(0,0,0));
-	}
-
-}
-
-.menu-button {
-	.transition(@duration linear);
-	cursor: pointer;
-	user-select: none;
-	.navicon:before,
-	.navicon:after {
-		.transition(all @duration/2 linear);
-	}
-
-
-	// Animate icon height on hover
-	&:hover {
-		.transition(all @duration linear);
-		.navicon:before,
-		.navicon:after {
-			.transition(all @duration/2 linear);
-		}
-
-.navicon:before {
-			top: 8px;
-		}
-
-.navicon:after {
-			top: -8px;
-		}
-
-	}
-
-}
-
-.navicon {
-	position: relative;
-	width: 28px;
-	height: 1px;
-	background: @content-bg;
-	transition: @duration;
-	border-radius: 1px;
-	&:before,
-	&:after {
-		display: block;
-		content: "";
-		height: 1px;
-		width: 28px;
-		background: @content-bg;
+	// toggle absolute when menu is open
+	.post {
 		position: absolute;
-		transition: @duration/2;
-		transition-delay: @duration;
-		border-radius: 1px;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		overflow: hidden;
 	}
-
-&:before {
-		top: 6px;
-	}
-
-&:after {
-		top: -6px;
-	}
-
-}
-
-.open:not(.steps) .navicon:before,
-.open:not(.steps) .navicon:after {
-	top: 0 !important;
-}
-
-.open .navicon:before,
-.open .navicon:after {
-	.transition(@duration);
-}
-
-
-/* Minus */
-.open {
-	.transform(scale(@toggled-size));
-}
-
-
-// Open and transition to a X
-.open.x {
-	.navicon {
-		background: transparent;
-		&:before {
-			.rotate(-45deg);
-			.transition-delay(1.4s);
-			.transition(.5s ease-in-out);
-		}
-
-&:after {
-			.rotate(45deg);
-			.transition-delay(1.4s);
-			.transition(.5s ease-in-out);
-		}
-
-	}
-
 }

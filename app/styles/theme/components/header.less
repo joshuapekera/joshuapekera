@@ -1,0 +1,69 @@
+.appheader {
+	position: relative;
+	height: 116px;
+	padding: 20px 20px 0;
+	z-index: 1;
+	@media (min-width: @screen-sm-min) {
+		padding: 30px 30px 0;
+	}
+}
+
+.menuright .myinfo {
+	display: inline-block;
+}
+
+.myinfo p.title {
+	color: @theme-gray;
+	margin-top: -1px;
+}
+
+.myinfo p.name a {
+	color: @black;
+	transition: all 250ms linear;
+	&:hover {
+		color: @link-hover-color;
+	}
+}
+
+.social {
+	display: none;
+	@media (min-width: @screen-sm-min) {
+		display: block;
+	}
+
+}
+
+.social li {
+	display: inline-block;
+	padding-top: 12px;
+	padding-right: 4px;
+	a {
+		color: @theme-gray-light;
+		transition: all 250ms linear;
+		&:hover {
+			color: black;
+		}
+
+	}
+
+}
+
+.social li a.dribbble:hover {
+	color: @bc-dribbble-2;
+}
+
+.social li a.linkedin:hover {
+	color: @bc-linkedin;
+}
+
+.social li a.facebook:hover {
+	color: @bc-facebook;
+}
+
+.social li a.twitter:hover {
+	color: @bc-twitter;
+}
+
+.email {
+	padding-left: 5px;
+}

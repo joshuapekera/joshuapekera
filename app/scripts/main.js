@@ -7,18 +7,31 @@ FastClick.attach(document.body);
 (function($) {
 	'use strict';
 	// Pretty Menu with Toggle
-	var $content = $('body');
+	var $body = $('body');
+	var $bodyHeight = $body.innerHeight();
 	var $icon = $('#hamburgericon');
+	var $appnav = $('#appnav');
 	var $menu = $('#appnav > .menu');
+	var $post = $('#main.post');
+	var $header = $('#appheader');
+	var $postContent = $('#main.post div.content');
 	$('#appnav a, .menu-button, .overlay').on('click', function() {
-		if ($content.hasClass('shift')) {
-			$content.removeClass('shift');
+		var headerHeight = $header.innerHeight();
+		var postOffset = $postContent.offset();
+		if ($body.hasClass('shift')) {
+			$body.removeClass('shift');
 			$icon.removeClass('open');
-			$menu.css('z-index', '-1');
+			$menu.css('z-index', '0');
+			window.setTimeout(function() {
+				$post.removeClass('cover');
+				$postContent.removeAttr('style');
+			}, 400);
 		} else {
-			$content.addClass('shift');
+			$body.addClass('shift');
 			$icon.addClass('open');
 			$menu.css('z-index', '1');
+			$post.addClass('cover');
+			$postContent.css('top', headerHeight + "px");
 		}
 	});
 })(jQuery);
