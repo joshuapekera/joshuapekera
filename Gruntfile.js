@@ -54,7 +54,8 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       less: {
-        files: ['<%= config.app %>/styles/{,*/}*.less'],
+        //files: ['<%= config.app %>/styles/{,*/}*.less'],
+        files: ['<%= config.app %>/styles/**/*.less'],
         tasks: ['less:server', 'autoprefixer']
       },
       styles: {
@@ -144,15 +145,28 @@ module.exports = function (grunt) {
     assemble: {
       options: {
         flatten: true,
-        layout: '<%= config.app %>/templates/layouts/default.hbs',
+        layoutdir: '<%= config.app %>/templates/layouts',
+        layout: 'base-parent.hbs',
         partials: ['<%= config.app %>/templates/partials/**/*.hbs'],
-        helpers: ['handlebars-helper-prettify']
+        assets: '/'
       },
       pages: {
+        options: {
+          layout: 'default-layout.hbs'
+        },
         files: {
           '.tmp/': ['<%= config.app %>/templates/pages/**/*.hbs']
         }
-      }
+      },
+      projects: {
+        // override task-level layout
+        options: {
+          layout: 'default-layout.hbs'
+        },
+        files: {
+          '.tmp/': ['<%= config.app %>/templates/projects/**/*.hbs']
+        },
+      },
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -235,10 +249,11 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the HTML file
     wiredep: {
       app: {
-        ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/templates/layouts/default.hbs'],
+        //ignorePath: /^\/|\.\.\//,
+        ignorePath: '../../../',
+        src: ['<%= config.app %>/templates/layouts/base-parent.hbs'],
         exclude: [
-        'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/zoom/*',
         'bower_components/modernizr/modernizr.js'
         ]
       },

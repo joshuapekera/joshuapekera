@@ -1,0 +1,73 @@
+// .oldsocial {
+// 	display: none; // hidden on mobile
+// 	@media (min-width: @screen-sm-min) {
+// 		display: block;
+// 	}
+// 	li {
+// 		display: inline-block;
+// 		padding-top: 12px;
+// 		padding-right: 4px;
+// 	}
+// 	a {
+// 		color: @theme-gray-light;
+// 		.transition(all 250ms linear);
+// 		&:hover {
+// 			color: black;
+// 		}
+// 	}
+// }
+
+.social {
+	padding: 0;
+	margin: 0;
+	li {
+		display: inline-block;
+	}
+	a {
+		color: @theme-gray-light;
+		.transition(all 250ms linear);
+		&:hover {
+			color: black;
+		}
+	}
+	.dark & {
+		a {
+			color: fade(@white, 60%);
+			&:hover {
+				color: @white;
+			}
+		}
+	}
+}
+
+.social li a.dribbble:hover {
+	color: @bc-dribbble-2;
+	.dark & {
+		color: @white;
+	}
+}
+
+.social li a.linkedin:hover {
+	color: @bc-linkedin;
+	.dark & {
+		color: @white;
+	}
+}
+
+.social li a.facebook:hover {
+	color: @bc-facebook;
+	.dark & {
+		color: @white;
+	}
+}
+
+.social li a.twitter:hover {
+	color: @bc-twitter;
+	.dark & {
+		color: @white;
+	}
+}
+
+.email {
+	padding-left: 5px;
+}

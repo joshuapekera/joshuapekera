@@ -1,0 +1,19 @@
+---
+layout: base-parent.hbs
+---
+	
+<main id="main" class="app m-scene">
+	<div class="post">
+		{{> navigation }}
+		<div id="appcontainer" class="appcontainer {{brightness}}">
+			<div class="overlay"></div>
+			<div id="appcontent" class="appcontent scene_element scene_element--fadeindown">
+				{{> header }}
+				<div class="content">
+					{{> body }}
+				</div>
+				{{> footer }}
+			</div>
+		</div>
+	</div>
+</main>

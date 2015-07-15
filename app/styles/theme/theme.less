@@ -6,7 +6,36 @@
 @import "variables.less";
 @import "mixins.less";
 
+//
+a {
+  cursor: pointer;
+  outline: 0;
+  &:hover, &:focus, &:active {
+    outline: 0;
+  }
+}
 
+a.btn {
+  outline: 0;
+  &:hover, &:focus, &:active {
+    outline: 0;
+  }
+}
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+select::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    outline: 0;
+    border: 0;
+}
+
+*::-moz-focus-inner {
+  outline: 0;
+  border: 0;
+}
 
 //
 // Buttons
@@ -32,9 +61,7 @@
 
 // Mixin for generating new styles
 .btn-styles(@btn-color: #555) {
-  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
-  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
-  background-repeat: repeat-x;
+  background-color: @btn-color;
   border-color: darken(@btn-color, 14%);
 
   &:hover,
@@ -50,12 +77,14 @@
   }
 }
 
+
 // Common styles
 .btn {
   // Remove the gradient for the pressed/active state
   &:active,
   &.active {
     background-image: none;
+    .box-shadow(none);
   }
 }
 

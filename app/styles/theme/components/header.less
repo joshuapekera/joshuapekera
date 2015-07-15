@@ -1,0 +1,121 @@
+.myinfo {
+	font-weight: 300;
+		.dark & {
+			//visibility:hidden;
+		}
+	p.name a {
+		color: @black;
+		.transition(all 250ms linear);
+		&:hover {
+			color: @link-color;
+		}
+		.dark & {
+			color: fade(@white, 70%);
+			&:hover {
+				color: @white;
+			}
+		}
+	}
+	p.title {
+		color: @theme-gray;
+		margin-top: -1px;
+		.dark & {
+			color: fade(@white, 70%);
+		}
+	}
+}
+
+/* Animated Menu Button */
+.menu-button {
+	//position: relative;
+	float: right;
+	line-height: 1em;
+	padding: 10px 3px;
+	cursor: pointer;
+	//z-index: 3;
+	@media (min-width: @screen-sm-min) {
+		padding: 10px 3px;
+	}
+	& *,
+	&:before,
+	&:after {
+		.transform(translate3d(0,0,0));
+	}
+	.transition(@button-duration linear);
+	cursor: pointer;
+	user-select: none;
+	.navicon:before,
+	.navicon:after {
+		.transition(all @button-duration/2 linear);
+	}
+	&:hover { // Animate icon height on hover
+		.transition(all @button-duration linear);
+		.navicon:before,
+		.navicon:after {
+			.transition(all @button-duration/2 linear);
+		}
+		.navicon:before {
+			top: 8px;
+		}
+		.navicon:after {
+			top: -8px;
+		}
+	}
+}
+
+.navicon {
+	position: relative;
+	width: 28px;
+	height: 1px;
+	background: @button-content-bg;
+	transition: @button-duration;
+	border-radius: 1px;
+	&:before,
+	&:after {
+		display: block;
+		content: "";
+		height: 1px;
+		width: 28px;
+		background: @button-content-bg;
+		position: absolute;
+		transition: @button-duration/2;
+		transition-delay: @button-duration;
+		border-radius: 1px;
+	}
+	&:before {
+		top: 6px;
+	}
+	&:after {
+		top: -6px;
+	}
+}
+
+.open:not(.steps) .navicon:before,
+.open:not(.steps) .navicon:after {
+	top: 0 !important;
+}
+
+.open .navicon:before,
+.open .navicon:after {
+	.transition(@button-duration);
+}
+
+.open { // scale when X
+	.transform(scale(@button-toggled-size));
+}
+
+.open.x {// Open and transition to a X
+	.navicon {
+		background: transparent;
+		&:before {
+			.rotate(-45deg);
+			.transition-delay(1.4s);
+			.transition(.5s ease-in-out);
+		}
+		&:after {
+			.rotate(45deg);
+			.transition-delay(1.4s);
+			.transition(.5s ease-in-out);
+		}
+	}
+}

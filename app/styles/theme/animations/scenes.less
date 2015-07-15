@@ -1,17 +1,33 @@
 .m-scene .scene_element {
-  .animation-duration(0.25s);
-  .transition-timing-function(ease-in);
-  .animation-fill-mode(both);
+	.animation-duration(400ms);
+	//.animation-delay(400ms);
+	.transition-timing-function(ease-in);
+	.animation-fill-mode(both);
+	// .shift & {
+	// 	.animation-delay(400ms);
+	// }
 }
 
 .m-scene .scene_element--fadein {
-  .animation-name(fadeIn);
+	.animation-name(fadeIn);
 }
 
 .m-scene .scene_element--fadeindown {
-  .animation-name(fadeInDown);
+	.animation-name(fadeInDown);
+}
+
+.m-scene .scene_element--bounceindown {
+	.animation-name(bounceInDown);
+}
+
+.m-scene .scene_element--scalein {
+	.animation-name(scaleIn);
+}
+
+.m-scene .scene_element--scaleinbig {
+	.animation-name(scaleInBig);
 }
 
 .m-scene.is-exiting .scene_element {
-  .animation-direction(alternate-reverse);
+	.animation-direction(alternate-reverse);
 }

@@ -12,6 +12,6 @@
   "noarg": true,
   "quotmark": "single",
   "strict": true,
-  "undef": true,
+  "undef": false,
   "unused": true
 }
