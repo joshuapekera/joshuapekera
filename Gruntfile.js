@@ -14,6 +14,7 @@ module.exports = function (grunt) {
 
   // Load assemble.io
   grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -167,6 +168,14 @@ module.exports = function (grunt) {
           '.tmp/': ['<%= config.app %>/templates/projects/**/*.hbs']
         },
       },
+    },
+    
+    // Publish dist to gitHub Pages branch
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
