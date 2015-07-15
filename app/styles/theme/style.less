@@ -2,22 +2,22 @@
 * {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-text-size-adjust: none;
-}
-
-body {
-	background-color: @body-bg;
+	.backface-visibility(hidden);
 }
 
 ::selection {
 	color: @white;
-  background: @theme-blue-light; /* WebKit/Blink Browsers */
-}
-::-moz-selection {
-	color: @white;
-  background: @theme-blue-light; /* Gecko Browsers */
+	background: @theme-blue-light;
+	/* WebKit/Blink Browsers */
 }
 
-body {
+::-moz-selection {
+	color: @white;
+	background: @theme-blue-light;
+	/* Gecko Browsers */
+}
+
+body * {
 	.user-select(none);
 }
 
@@ -26,8 +26,7 @@ body {
 }
 
 .springy .content * {
-	// prevent user select on the slider
-	.user-select(none);
+	.user-select(none);// no select on the slider
 }
 
 body {
@@ -36,11 +35,189 @@ body {
 	font-style: normal;
 	font-size: 20px;
 	line-height: 1.28;
+	background-color: @body-bg;
 }
 
-// Button Styles
 
+/* Home Page */
 .btn-cover {
-	.btn-styles(@white);
+	color: fade(@white, 60%);
+	padding: 4px 20px;
+	font-weight: 400;
+	font-size: @font-size-large;
+	line-height: @line-height-large;
+	outline: 0; // moz fix
 	border-radius: 24px;
+	background-color: transparent;
+  border-color: fade(@white, 50%);
+	.transition(all 200ms linear);
+
+  &:hover,
+  &:focus  {
+		color: @white;
+		border-color: fade(@white, 70%);
+		outline: 0; // moz fix
+    //background-color: darken(@white, 12%);
+  }
+
+  &:active,
+  &.active {
+    background-color: transparent;
+		outline: 0; // moz fix
+    //border-color: darken(@white, 14%);
+  }
+	@media (min-width: @screen-sm-min) {
+		padding: 0;
+		border: none;
+		&:hover {
+			border: none;
+		}
+	}
+	&:after {
+		content: "\f3d1";
+		font-family: "Ionicons";
+		display: inline-block;
+		vertical-align: middle;
+		padding-bottom: 2px;
+		font-size: 24px;
+		//line-height: 12px;
+		padding-left: 8px;
+	}
+}
+
+.cover-wrapper {
+	display: table;
+	width: 100%;
+	height: 100%;
+	min-height: 100%; // For at least Firefox
+	background-image: url("../images/hero-desk-md.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	.backface-visibility(hidden);
+	@media (min-width: @screen-sm-min) {
+		background-image: url("../images/hero-desk-lg.jpg");
+	}
+	&-inner {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+.cover-container {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.cover-inner {
+	//padding: 0 20px;
+	text-align: center;
+	border-radius: 40px;
+	.lead {
+		//color: @white;
+		color: fade(@white, 70%);
+		margin-bottom: 0;
+		font-weight: 300;
+		font-size: @font-size-h1 + 6;
+		//line-height: @line-height-base + .5;
+		@media (min-width: @screen-sm-min) {
+			padding: 0 80px;
+		}
+	}
+}
+
+.cover-heading {
+	font-weight: 300;
+	font-size: @font-size-h2;
+	color: fade(@white, 90%);
+	padding: 0 20px;
+	margin-bottom: 30px;
+	@media (min-width: @screen-sm-min) {
+		font-weight: 100;
+		font-size: @font-size-h1 + 10;
+		margin-bottom: 0px;
+	}
+}
+
+// Mast Footer
+.mastfoot {
+	position: fixed;
+	bottom: 0px;
+	text-align: center;
+	width: 100%;
+	.social {
+		margin-bottom: 20px;
+		font-size: @font-size-base + 10;
+		@media (min-width: @screen-sm-min) {
+			font-size: @font-size-base + 6;
+		}
+		li {
+			margin: 0 4px;
+			@media (min-width: @screen-sm-min) {
+				margin: 0 2px;
+			}
+		}
+	}
+	blockquote {
+		display: none;
+		font-size: @font-size-base;
+		color: @gray-light;
+		border: none;
+		padding: 0;
+		@media (min-width: @screen-sm-min) {
+			display: block;
+		}
+	}
+	
+	p {
+		display: inline-block;
+	}
+	
+	footer {
+		display: inline-block;
+		font-size: @font-size-base;
+		color: @gray-light;
+		//text-align: center;
+		@media (min-width: @screen-sm-min) {
+			
+			//text-align: right;
+		}
+	}
+}
+
+
+// Affix and center
+@media (min-width: @screen-sm-min) {
+	/* Pull out the header and footer */
+	.masthead {
+		position: fixed;
+		top: 0;
+	}
+	
+	.mastfoot {
+		//position: fixed;
+		bottom: 0;
+	}
+	
+	// Start the vertical centering
+	.cover-wrapper-inner {
+		vertical-align: middle;
+	}
+	
+	// Handle the widths
+	.masthead,
+	.mastfoot,
+	.cover-container {
+		width: 100%;
+		
+		// Must be percentage or pixels for horizontal alignment
+	}
+}
+
+@media (min-width: 992px) {
+	.masthead,
+	.mastfoot,
+	.cover-container {
+		width: 900px;
+	}
 }

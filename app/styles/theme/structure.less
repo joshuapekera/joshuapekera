@@ -1,11 +1,23 @@
 /* Site Stuctural Layout
 ---------------------------------- */
-body{
-	overflow-x: hidden;
-	//stop firefox from showing horizontal scroll
+body {
+	overflow-x: hidden; //firefox no h-scroll
 }
+
 .app {
-	overflow: auto;
+	//overflow: auto;
+}
+
+.post {
+	// position: absolute;
+	// top: 0;
+	// bottom: 0;
+	// left: 0;
+	// right: 0;
+	//overflow-y: scroll;
+	.shift & {
+		overflow: hidden;
+	}
 }
 
 .appnav {
@@ -16,37 +28,48 @@ body{
 	left: 0;
 	width: auto;
 	height: auto;
-	padding: 20px;
 	overflow: hidden;
-	background: url("../images/background.jpg");
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	//visibility: hidden;
-	//.transition(visibility 400ms linear);
+	background-color: #252634;
+	//z-index: -47;
+	// background: url("../images/background-lg.jpg");
+	// background-size: cover;
+	// background-position: center center;
+	// background-repeat: no-repeat;
 }
 
 .appcontainer {
-	position: relative;
-	// top: 0;
-	// right: 0;
-	// bottom: 0;
-	// left: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	padding: 0;
 	width: auto;
 	height: auto;
-	background-color: @body-bg;
-	//overflow-x: hidden;
-	overflow-y: scroll;
-	.transition(bacground-color 0ms);
-	// fixes  flickering issue in iOS
-
-	//padding-top:1px;
-	//margin-top:-1px;
-	//-webkit-overflow-scrolling: touch;
-
-	//.backface-visibility(hidden);
-	//.translate3d(0,0,0);
+	//overflow-y: scroll;
+	//height: auto;
+	.scale3D(1, 1, 1);
+	.transition(all 400ms cubic-bezier(0.175, 0.885, 0.335, 1.05));
+	.backface-visibility(hidden);
+	-webkit-font-smoothing: subpixel-antialiased;
+	.cover & { // cover for non scrolling pages
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		overflow: hidden;
+	}
+	.shift & {
+		#shift > .right(); // show menu
+		overflow-y: hidden;
+	}
+	.shifting & {
+		overflow-y: hidden;
+	}
+	.zoom-overlay-open & {
+		.transform(none);
+	}
 }
 
 .overlay {
@@ -55,15 +78,25 @@ body{
 	bottom: 0;
 	left: 0;
 	right: 0;
-	z-index: 2;
+	z-index: 3;
 	cursor: pointer;
-
-	// overlay is activated when #appcontainer is set to open
-	display: none;
-	opacity: 0;
+	display: none;// display under shift
+	opacity: 0;// display under shift
+	//background-color: fade(@black, 10%);// filter experiment
+	//-webkit-backdrop-filter: blur(20px);// filter experiment
+	.shift & {
+		display: block;
+		opacity: 1;
+		overflow-x: hidden;
+	}
+	// .loading & {
+	// 	display: block;
+	// 	opacity: 1;
+	// 	background-color: @body-bg;
+	// }
 }
 
-.header {
+.appheader {
 	position: relative;
 	height: 116px;
 	padding: 20px 20px 0;
@@ -71,156 +104,73 @@ body{
 	@media (min-width: @screen-sm-min) {
 		padding: 30px 30px 0;
 	}
+	.post & {
+		background-color: @body-bg;
+		.shift & {
+			//background-color: fade(@body-bg, 90%);// fade when open
+		}
+	}
 }
 
 .appcontent {
 	height: 100%;
 	width: 100%;
-	background-color: @body-bg;
+	.backface-visibility(hidden);
+	//z-index: 2;
+	.cover & {
+		
+	}
+	.post & {
+		//position: relative;// sticky footer
+		//min-height: 100vmin;// sticky footer
+		background-color: @body-bg;
+		.shift & {
+			//background-color: transparent;// fade when open
+		}
+	}
+	.shift & {
+		//.opacity(.9);// opaque when open
+	}
 }
 
 .content {
-	position: relative;
-	//background-color: @body-bg;
-	// Allow users to select content by default.
-}
-
-/* Content Utilities
--------------------- */
-/* Post Layout */
-.post {
-	.content {
-		// Offset from header in a scrollable layout
-
-	}
-}
-/* Cover Layout */
-.cover {
-	// make objects full width for non scrolling pages that are fullscreen
-	.appcontainer {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		overflow: hidden;
-	}
-	.content {
+	//position: relative;
+	.cover & {
 		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
-		//width: auto;
-		//height: auto;
 	}
-}
-
-.site-wrapper {
-		display: table;
-		width: 100%;
-		height: 100%;
-		/* For at least Firefox */
-		min-height: 100%;
-
-
-		background-image: url("../images/hero-joshua-lg.jpg");
-		background-repeat:no-repeat;
-		background-position: center;
-		background-size: cover;
-		.backface-visibility(hidden);
-
-		// background-image: url("../images/polygons@2x.jpg");
-		// background-repeat:repeat;
-		// background-position: center;
-		// background-size: 250px 250px;
-}
-
-.site-wrapper-inner {
-		display: table-cell;
-		vertical-align: middle;
-}
-
-.cover-container {
-		margin-right: auto;
-		margin-left: auto;
-}
-
-.cover-inner {
-		padding: 0 20px;
-		text-align: center;
-		.btn-lg {
-				padding: 10px 20px;
-				font-weight: bold;
-		}
-}
-
-.cover-heading {
-	font-weight: 600;
-}
-
-// Mast Footer
-.mastfoot {
-	blockquote {
-		text-align: center;
-		border: none;
-		padding: 0px;
+	.post & {
+		//margin-bottom: 120px;// sticky footer
+		background-color: @body-bg;
 	}
-	footer {
-		text-align: center;
-		@media (min-width: @screen-sm-min) {
-			//text-align: right;
-		}
+	.shift & {
+		//.opacity(.9);// fade when open
 	}
-}
-
-// Affix and center
-@media (min-width: 768px) {
-		/* Pull out the header and footer */
-		.masthead {
-				position: fixed;
-				top: 0;
-		}
-
-		.mastfoot {
-	    position: fixed;
-	    bottom: 0;
-	  }
-
-// Start the vertical centering
-		.site-wrapper-inner {
-				vertical-align: middle;
-		}
-
-// Handle the widths
-		.masthead,
-		.mastfoot,
-		.cover-container {
-				width: 100%;
-				// Must be percentage or pixels for horizontal alignment
-		}
-
-}
-
-@media (min-width: 992px) {
-		.masthead,
-		.mastfoot,
-		.cover-container {
-				width: 700px;
-		}
-}
-
-/* Slider Layout */
-.slider {
-	.appcontainer {
-		// prevent overflow for rebound slider
-		overflow-y: hidden;
-		overflow-x: hidden;
-	}
-	.content {
+	// .shifting & {
+	// 	overflow-y: hidden;
+	// }
+	.slider & {
 		margin: 0;
 		padding: 0;
 	}
+}
+
+.footer {
+	.post & {
+		//position: absolute;
+		//bottom: 0;
+		width: 100%;
+		height: 120px;// fixed height for sticky footer
+		border-top: 1px solid @theme-gray;
+		background-color: @theme-gray-light;
+	}
+}
+
+.boards {
+	background-color: @body-bg;
 }
 
 // Top Left Info
@@ -233,61 +183,5 @@ body{
 		margin: 0;
 		padding: 0;
 		.box-sizing(border-box);
-	}
-}
-
-// Menu is open
-.shift {
-	.appnav {
-		//visibility: visible;
-		//.transition(visibility 400ms linear);
-	}
-
-	.menu {
-		z-index: 1;
-	}
-
-	.overlay {
-		display: block;
-		opacity: 1;
-		overflow-x: hidden;
-	}
-
-	// container has constrast when menu is open
-	.appcontainer {
-		.box-shadow(inset 0 1px 0 0 fade(@white, 50%));
-		//border-top: 1px solid fade(@white, 50%);
-		overflow-y: hidden;
-
-		// Remove padding and margins set to fix iOS
-		//padding-top: 0;
-		//margin-top: 0;
-
-		// Remove background when menu is open
-		background-color: transparent;
-
-		//background: fade(@body-bg, 90%);
-		//filter: blur(20px);
-		//box-shadow: inset 0px 20px 80px 0px rgba(255, 255, 255, .7);
-		//box-shadow: 2px 0 4px 0px rgba(0, 0, 0, 0.2);
-	}
-	// give content opacity when menu is open.
-	.appcontent {
-		.opacity(.90);
-	}
-
-	// give content opacity when menu is open.
-	// .content {
-	// 	.opacity(.90);
-	// }
-
-	// toggle absolute when menu is open
-	.post {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		overflow: hidden;
 	}
 }

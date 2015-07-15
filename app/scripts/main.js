@@ -1,103 +1,118 @@
-FastClick.attach(document.body);
+$(document).ready(function(){
+	initPage();
+});
 
-// particlesJS.load('particles-js', 'json/particles.json', function() {
-//   console.log('callback - particles.js config loaded');
-// });
+// ------------------------------------ //
+// Variables
+// -------------------------------------//
 
-(function($) {
+var site = {};
+var panVelocity = 0;
+
+// ------------------------------------ //
+// Functions
+// -------------------------------------//
+
+// ------------------------------------ //
+// Initialize Page
+// -------------------------------------//
+
+var initPage = function(){
+	//FastClick.attach(document.body);
+	toggleNavigation();
+	reboundSlider();
+	dragImage();
+}
+
+// ------------------------------------ //
+// Off Canvas Nav
+// -------------------------------------//
+var toggleNavigation = function() {
+	var body = $('body'),
+		content = $('#appcontainer'),
+		navIcon = $('#hamburgericon'),
+		shiftIt = $('#appnav a, .menu-button, .overlay'),
+		transitionEnd = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
+		
+	shiftIt.on('click', function() {
+		body.toggleClass('shift');
+		navIcon.toggleClass('open');
+		body.addClass('shifting');
+	});
+	content.on(transitionEnd, function() {
+		body.removeClass('shifting');
+	})
+};
+
+// ------------------------------------ //
+// Rebound Slider
+// -------------------------------------//
+var reboundSlider = function () {
+	if ($('#wrapper').length > 0) {
+		var springyCarousel = $('#wrapper').springyCarousel({
+			carouselTransitionComplete: function(spring, xTranslation) {}
+		});
+	
+		$(window).resize(function() {
+			springyCarousel.recalculateSize();
+			springyCarousel.layoutCaptions();
+		});
+	}
+};
+
+// ------------------------------------ //
+// Drag Slider Images
+// -------------------------------------//
+var dragImage = function () {
+	var slideImage = $('#slides li img');
+	slideImage.attr('draggable', 'false');
+	slideImage.attr('ondragstart', 'return false;');
+};
+
+// ------------------------------------ //
+// Initialize smoothState
+// -------------------------------------//
+$(function() {
 	'use strict';
-	// Pretty Menu with Toggle
-	var $body = $('body');
-	var $bodyHeight = $body.innerHeight();
-	var $icon = $('#hamburgericon');
-	var $appnav = $('#appnav');
-	var $menu = $('#appnav > .menu');
-	var $post = $('#main.post');
-	var $header = $('#appheader');
-	var $postContent = $('#main.post div.content');
-	$('#appnav a, .menu-button, .overlay').on('click', function() {
-		var headerHeight = $header.innerHeight();
-		var postOffset = $postContent.offset();
-		if ($body.hasClass('shift')) {
-			$body.removeClass('shift');
-			$icon.removeClass('open');
-			$menu.css('z-index', '0');
-			window.setTimeout(function() {
-				$post.removeClass('cover');
-				$postContent.removeAttr('style');
-			}, 400);
-		} else {
-			$body.addClass('shift');
-			$icon.addClass('open');
-			$menu.css('z-index', '1');
-			$post.addClass('cover');
-			$postContent.css('top', headerHeight + "px");
+	var options = {
+		prefetch: true,
+		cacheLength: 2,
+		loadingClass: 'is-loading',
+		blacklist: '.nss',
+		//loadingClass: 'loading',
+		development: false,
+		onBefore: function($currentTarget, $container) {
+			
+		},
+		onStart: {
+			duration: 600, // Duration of animation
+			render: function($container) {
+				// Add CSS animation reversing class
+				$container.addClass('is-exiting');
+				// Restart animation
+				smoothState.restartCSSAnimations();
+			}
+		},
+		onProgress: {
+    	duration: 0,
+    	render: function ($container) {
+				
+			}
+  	},
+		onReady: {
+			duration: 0,
+			render: function($container, $newContent) {
+				// Remove CSS animation reversing class
+				$container.removeClass('is-exiting');
+
+				// Inject the new content
+				$container.html($newContent);
+
+			}
+		},
+		onAfter: function($container, $newContent) {
+			initPage();
 		}
-	});
-})(jQuery);
-
-(function($) {
-	'use strict';
-	// spingyCarousel
-	var springyCarousel = $('#wrapper').springyCarousel({
-		carouselTransitionComplete: function(spring, xTranslation) {}
-	});
-
-	$(window).resize(function() {
-		springyCarousel.recalculateSize();
-		springyCarousel.layoutCaptions();
-	});
-})(jQuery);
-
-(function($) {
-	'use strict';
-	var $image = $('#slides li img');
-	$image.attr('draggable', 'false');
-	$image.attr('ondragstart', 'return false;');
-})(jQuery);
-
-// // smoothState
-// (function($) {
-//   var $body = $('html, body'),
-//   content = $('#main').smoothState({
-//     prefetch: true,
-//     pageCacheSize: 4,
-//     // blacklist anything you dont want targeted
-//     blacklist : '.nss',
-//     development : false,
-//     // Runs when a link has been activated
-//     onStart: {
-//         duration: 300, // Duration of our animation
-//         render: function (url, $container) {
-//             // toggleAnimationClass() is a public method
-//             // for restarting css animations with a class
-//             content.toggleAnimationClass('is-exiting');
-//             // Scroll user to the top
-//             $body.animate({
-//                 scrollTop: 0
-//             });
-//         }
-//     },
-//     onProgress : {
-//         duration: 0, // Duration of the animations, if any.
-//         render: function (url, $container) {
-//           $body.css('cursor', 'wait');
-//           $body.find('a').css('cursor', 'wait');
-//         }
-//     },
-//     onEnd : {
-//         duration: 0, // Duration of the animations, if any.
-//         render: function (url, $container, $content) {
-//             $body.css('cursor', 'auto');
-//             $body.find('a').css('cursor', 'auto');
-//             $container.html($content);
-//             // Trigger document.ready and window.load
-//             $(document).ready();
-//             $(window).trigger('load');
-//         }
-//     },
-//     onAfter : function(url, $container, $content) {
-//     }
-//   }).data('smoothState');
-//   //.data('smoothState') makes public methods available
-// })(jQuery);
+	},
+	smoothState = $('#main').smoothState(options).data('smoothState');
+});

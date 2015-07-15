@@ -30,74 +30,90 @@
 		<script src=scripts/holder.js></script>
 	
 
-	<body class=menuright>
+	<body>
 		<!--[if lt IE 10]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 		<!-- Include a nav from partials -->
 		
-<main id=main>
-	<nav id=appnav>
-	<div class=menu>
-		<a href="/">Home</a>
-		<a href=portfolio.html>Portfolio</a>
-		<a href=about.html>About</a>
-		<a href=ideas.html>Ideas</a>
-	</div>
-</nav>
+	
+<main id=main class="app m-scene">
+	<div class="post scene_element scene_element--fadein">
+		<div id=appnav class=appnav>
+	<nav class=menu>
+		<ul class=nav>
+			<li><a href="/">Home</a></li>
+			<li><a href=portfolio.html>Portfolio</a></li>
+			<li><a href=about.html>About</a></li>
+			<li><a href=ideas.html>Ideas</a></li>
+		</ul>
+		<h4>Connect</h4>
+		<ul class=social>
+		<li><a class=facebook href=https://facebook.com/joshuapekera target=_blank><i class="fa fa-facebook-official"></i></a></li>
+		<li><a class=twitter href=https://twitter.com/joshuapekera target=_blank><i class="fa fa-twitter"></i></a></li>
+		<li><a class=linkedin href=https://linkedin.com/in/joshuapekera target=_blank><i class="fa fa-linkedin-square"></i></a></li>
+		<li><a class=dribbble href=https://dribbble.com/joshuapekera target=_blank><i class="fa fa-dribbble"></i></a></li>
+		<li><a href="mailto:joshuapekera@me.com?subject=Joshua, Lets chat!"><i class="fa fa-envelope"></i></a></li>
+</ul>
 
-	<div id=appcontainer>
-		<div class=overlay></div>
-		<div id=appcontent>
-			<header>
+	</nav>
+</div>
+
+		<div id=appcontainer class=appcontainer>
+			<div class=overlay></div>
+			<div id=appcontent class=appcontent>
+				<header id=appheader class=appheader>
   <div class=myinfo>
     <p class=name><a href="/">Joshua Pekera</a></p>
     <p class=title>Swoosh</p>
-    <ul class=social>
-        <li><a class=facebook href=https://facebook.com/joshuapekera target=_blank><i class="fa fa-facebook-official"></i></a></li>
-        <li><a class=twitter href=https://twitter.com/joshuapekera target=_blank><i class="fa fa-twitter"></i></a></li>
-        <li><a class=linkedin href=https://linkedin.com/in/joshuapekera target=_blank><i class="fa fa-linkedin-square"></i></a></li>
-        <li><a class=dribbble href=https://dribbble.com/joshuapekera target=_blank><i class="fa fa-dribbble"></i></a></li>
-        <li><a href="mailto:joshuapekera@me.com?subject=Joshua, Lets chat!"><i class="fa fa-envelope"></i></a></li>
-    </ul>
   </div>
   <a id=hamburgericon class="menu-button x nss"><div class=navicon></div></a>
 </header>
 
-         
-<section id=swoosh class="content m-scene">
-  <div class="container scene_element scene_element--fadeindown">
-    <div class=row>
-    	<div class=col-sm-12>
-    		<h1>Hello World</h1>
-        <img data-sizes=auto data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload">
-        <p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
-    	</div>
-    </div>
-    <div class=row>
-    	<div class=col-sm-12>
-    		<h1>Hello World</h1>
-        <img data-sizes=auto data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload">
-        <p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
-    	</div>
-    </div>
-    <div class=row>
-    	<div class=col-sm-12>
-    		<h1>Hello World</h1>
-        <img data-sizes=auto data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload">
-        <p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
-    	</div>
-    </div>
-    <div class=row>
-    	<div class=col-sm-12>
-    		<h1>Hello World</h1>
-        <img data-sizes=auto data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload">
-        <p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
-    	</div>
-    </div>
-  </div>
-</section>
+				<div class=content>
+					
+<article>
+	<div class=container>
+		<div class=row>
+			<div class=col-sm-12>
+				<h1>Hello World</h1>
+				<!-- <img data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload" data-action="zoom" /> -->
+				<img src=http://placehold.it/1920x1318 class=img-responsive data-action=zoom alt="">
+				<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
+			</div>
+		</div>
+		<div class=row>
+			<div class=col-sm-12>
+				<h1>Hello World</h1>
+				<img data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload" data-action="zoom">
+				<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
+			</div>
+		</div>
+		<div class=row>
+			<div class=col-sm-12>
+				<h1>Hello World</h1>
+				<img data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload" data-action="zoom">
+				<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
+			</div>
+		</div>
+		<div class=row>
+			<div class=col-sm-12>
+				<h1>Hello World</h1>
+				<img data-srcset="../images/project-swoosh-1-sm.jpg 600w, ../images/project-swoosh-1-md.jpg 1000w, ../images/project-swoosh-1-lg.jpg 2000w" class="img-responsive lazyload" data-action="zoom">
+				<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
+			</div>
+		</div>
+	</div>
+</article>
 
+				</div>
+				<footer class=footer>
+	<div class=container>
+		<p class=text-muted>Place sticky footer content here.</p>
+	</div>
+</footer>
+
+			</div>
 		</div>
 	</div>
 </main>
@@ -106,7 +122,6 @@
 		<script src=scripts/vendor.js></script>
 
 		<script src=scripts/main.js></script>
-
 
 	
 

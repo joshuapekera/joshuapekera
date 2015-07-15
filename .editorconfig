@@ -10,12 +10,16 @@ root = true
 # Change these settings to your own preference
 indent_style = tab
 indent_size = 2
+tab_width = 1
 
 # We recommend you to keep these unchanged
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+#[*.less]
+#tab_width = 1
 
 [*.md]
 trim_trailing_whitespace = true

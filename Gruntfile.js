@@ -54,7 +54,8 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       less: {
-        files: ['<%= config.app %>/styles/{,*/}*.less'],
+        //files: ['<%= config.app %>/styles/{,*/}*.less'],
+        files: ['<%= config.app %>/styles/**/*.less'],
         tasks: ['less:server', 'autoprefixer']
       },
       styles: {
@@ -252,7 +253,7 @@ module.exports = function (grunt) {
         ignorePath: '../../../',
         src: ['<%= config.app %>/templates/layouts/base-parent.hbs'],
         exclude: [
-        'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/zoom/*',
         'bower_components/modernizr/modernizr.js'
         ]
       },

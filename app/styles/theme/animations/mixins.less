@@ -5,15 +5,25 @@
 }
 
 .animation(@arguments) {
-    -webkit-animation: @arguments;
+  -webkit-animation: @arguments;
 	-moz-animation: @arguments;
 	animation: @arguments;
 }
 
 .animation-name(@name) {
   -webkit-animation-name: @name;
-          animation-name: @name;
+  animation-name: @name;
 }
+
+/* @keyframes name | duration | timing-function | delay |
+   iteration-count | direction | fill-mode | play-state */
+  // ex: animation: slidein 3s ease-in 1s 2 reverse both paused;
+
+/* @keyframes name | duration | timing-function | delay */
+  // ex: animation: slidein 3s linear 1s;*/
+
+/* @keyframes name | duration */
+  // ex: animation: slidein 3s;
 
 // Example Keyframe
 /*

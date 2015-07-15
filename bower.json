@@ -9,6 +9,7 @@
     "picturefill": "~3.0.0-alpha1",
     "rebound-js": "~0.0.10",
     "smoothstate": "~0.7.2",
+    "jquery.transit": "~0.9.12",
     "fontawesome": "~4.3.0",
     "bootstrap": "~3.3.4",
     "ionicons": "~2.0.1"
