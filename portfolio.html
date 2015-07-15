@@ -37,9 +37,9 @@
 		<!-- Include a nav from partials -->
 		
 <main id=main class="app m-scene">
-	<div class="cover scene_element scene_element--fadein">
+	<div class=cover>
 		<div id=appnav class=appnav>
-	<nav class=menu>
+	<nav class="menu dark">
 		<ul class=nav>
 			<li><a href="/">Home</a></li>
 			<li><a href=portfolio.html>Portfolio</a></li>
@@ -48,11 +48,11 @@
 		</ul>
 		<h4>Connect</h4>
 		<ul class=social>
-		<li><a class=facebook href=https://facebook.com/joshuapekera target=_blank><i class="fa fa-facebook-official"></i></a></li>
-		<li><a class=twitter href=https://twitter.com/joshuapekera target=_blank><i class="fa fa-twitter"></i></a></li>
-		<li><a class=linkedin href=https://linkedin.com/in/joshuapekera target=_blank><i class="fa fa-linkedin-square"></i></a></li>
-		<li><a class=dribbble href=https://dribbble.com/joshuapekera target=_blank><i class="fa fa-dribbble"></i></a></li>
-		<li><a href="mailto:joshuapekera@me.com?subject=Joshua, Lets chat!"><i class="fa fa-envelope"></i></a></li>
+	<li><a class=facebook href=https://facebook.com/joshuapekera target=_blank><i class="fa fa-facebook-official"></i></a></li>
+	<li><a class=twitter href=https://twitter.com/joshuapekera target=_blank><i class="fa fa-twitter"></i></a></li>
+	<li><a class=linkedin href=https://linkedin.com/in/joshuapekera target=_blank><i class="fa fa-linkedin-square"></i></a></li>
+	<li><a class=dribbble href=https://dribbble.com/joshuapekera target=_blank><i class="fa fa-dribbble"></i></a></li>
+	<li><a href="mailto:joshuapekera@me.com?subject=Joshua, Lets chat!"><i class="fa fa-envelope"></i></a></li>
 </ul>
 
 	</nav>
@@ -60,7 +60,7 @@
 
 		<div id=appcontainer class=appcontainer>
 			<div class=overlay></div>
-			<div id=appcontent class=appcontent>
+			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
 				<header id=appheader class=appheader>
   <div class=myinfo>
     <p class=name><a href="/">Joshua Pekera</a></p>
@@ -81,39 +81,21 @@
     </li>
 
     <li>
-      <img src=../images/slide-origami.jpg alt=slide-swoosh>
-      <div class=caption>
-        <a href=origami.html class="btn ion-ios-albums-outline"></a>
-      </div>
+      <img data-srcset="../images/slide-comingsoon-sm.jpg 600w, ../images/slide-comingsoon-md.jpg 1000w, ../images/slide-comingsoon-lg.jpg 2000w" class="lazyload">
     </li>
-
     <!-- <li id="">
-      <img src="http://placehold.it/1200x800" alt="slide-swoosh">
+      <img src="../images/slide-origami.jpg" alt="slide-swoosh">
       <div class="caption">
         <a href="origami.html" class="btn ion-ios-albums-outline"></a>
       </div>
     </li> -->
-
-    <li>
-      <img data-srcset="../images/slide-comingsoon-sm.jpg 600w, ../images/slide-comingsoon-md.jpg 1000w, ../images/slide-comingsoon-lg.jpg 2000w" class="lazyload">
-      <div class=caption>
-        <a href=comingsoon.html class="btn ion-ios-albums-outline"></a>
-      </div>
-    </li>
-    <li>
-      <img data-srcset="../images/slide-comingsoon-sm.jpg 600w, ../images/slide-comingsoon-md.jpg 1000w, ../images/slide-comingsoon-lg.jpg 2000w" class="lazyload">
-      <div class=caption>
-        <a href=comingsoon.html class="btn ion-ios-albums-outline"></a>
-      </div>
-    </li>
   </ul>
 </div>
 
 <ul id=nav class=springy-nav>
   <li id=tab1>Swoosh</li>
-  <li id=tab2>Aedificatiuncula</li>
-  <li id=tab3>Aliter</li>
-  <li id=tab4>Maximalista</li>
+  <li id=tab2>Coming Soon</li>
+  <!-- <li id="tab3">Aliter</li> -->
 </ul>
 
 <div class="fade right_fade"></div>
