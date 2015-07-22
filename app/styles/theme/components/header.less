@@ -49,10 +49,10 @@
 		.transition(all @button-duration/2 linear);
 	}
 	&:hover { // Animate icon height on hover
-		.transition(all @button-duration linear);
+		.transition(all @button-duration ease-in);
 		.navicon:before,
 		.navicon:after {
-			.transition(all @button-duration/2 linear);
+			.transition(all @button-duration/2 ease-in);
 		}
 		.navicon:before {
 			top: 8px;
@@ -67,20 +67,34 @@
 	position: relative;
 	width: 28px;
 	height: 1px;
+	border-radius: 1px;
 	background: @button-content-bg;
 	transition: @button-duration;
-	border-radius: 1px;
+	@media (min-width: @screen-md-min) {
+		height: 1px;
+		border-radius: 1px;
+	}
+	.dark & {
+		background: fade(@white, 60%);
+	}
 	&:before,
 	&:after {
 		display: block;
 		content: "";
 		height: 1px;
+		border-radius: 1px;
 		width: 28px;
 		background: @button-content-bg;
 		position: absolute;
 		transition: @button-duration/2;
 		transition-delay: @button-duration;
-		border-radius: 1px;
+		@media (min-width: @screen-md-min) {
+			height: 1px;
+			border-radius: 1px;
+		}
+		.dark & {
+			background: fade(@white, 60%);
+		}
 	}
 	&:before {
 		top: 6px;

@@ -85,21 +85,18 @@
 @button-content-bg: #999;
 
 //== Structure
-//## Settings for the off-canvas menu and content slideout.
-
-@slideout-offset:       30%;
 
 //** Menu width values.
-@menu-width:            @slideout-offset;
-@menu-sm-width:         @menu-width + 0;
-@menu-md-width:         @menu-width + 25;
-@menu-lg-width:         @menu-width + 50;
+@menu-width:            100%;
+@menu-sm-width:         @menu-width - 50;
+@menu-md-width:         @menu-width - 60;
+@menu-lg-width:         @menu-width - 70;
 
 //** Content slide out values when loaded on the left match to menu.
-@content-left:          @menu-width;
-@content-sm-left:       @menu-sm-width + 0;
-@content-md-left:       @menu-md-width + 0;
-@content-lg-left:       @menu-lg-width + 0;
+@content-left:          70%;
+@content-sm-left:       @content-left - 20;
+@content-md-left:       @content-left - 30;
+@content-lg-left:       @content-left - 40;
 
 //** Content slide out values when loaded on the right match to menu.
 @content-right:         @content-left * -1;
