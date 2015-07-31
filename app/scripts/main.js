@@ -70,7 +70,7 @@ var toggleNavigation = function() {
 		content = $('#appcontainer'),
 		navIcon = $('#hamburgericon'),
 		footer = $('#page-footer'),
-		shiftIt = $('#appnav a, .menu-button, .overlay'),
+		shiftIt = $('#menu a, .menu-button, .overlay'),
 		transitionEnd = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
 		
 	shiftIt.on('click', function() {
@@ -79,20 +79,24 @@ var toggleNavigation = function() {
 		body.addClass('shifting');
 	});
 	content.on(transitionEnd, function() {
-		body.removeClass('shifting');
-	})
+		setTimeout(function () {
+			body.removeClass('shifting');
+		}, 400);
+	});
 };
 
 // ------------------------------------ //
 // Close Nav
 // -------------------------------------//
-var closeNav = function () {
+var delayState = function () {
 	var body = $('body');
-	var navLink = $('#appnav a');
+	var navLink = $('#menu a');
+	var main = $('#main');
 	navLink.on('click', function(){
-		if (body.hasClass('shift')) {
-			removeClass('shift');
-		}
+		main.css({
+			'-webkit-animation-delay': '400ms',
+			'animation-delay': '400ms',
+		});
 	});
 };
 
@@ -128,18 +132,22 @@ $(function() {
 	'use strict';
 	var options = {
 		prefetch: true,
-		cacheLength: 0,
+		//prefetchOn: 'mouseover',
+		cacheLength: 8,
 		loadingClass: 'is-loading',
 		blacklist: '.nss',
 		development: false,
 		// Runs before a page load has been started
 		onBefore: function($currentTarget, $container) {
+			//delayState();
 			// Unhide Loader
-			$('#loader').css('display', 'block');
+			setTimeout(function () {
+				$('#loader').css('display', 'block');
+			}, 800);
 		},
 		// Runs once a page load has been activated
 		onStart: {
-			duration: 2000, // Duration of animation
+			duration: 2500, // Duration of animation
 			render: function($container) {
 				//$('.myinfo').addClass('fadeOut');
 				// Add CSS animation reversing class

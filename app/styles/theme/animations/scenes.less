@@ -1,11 +1,11 @@
 .m-scene .scene_element {
 	.animation-duration(@scene-duration);
-	//.animation-delay(400ms);
 	.transition-timing-function(ease-in);
 	.animation-fill-mode(both);
-	// .shift & {
-	// 	.animation-delay(400ms);
-	// }
+	//.animation-delay(500ms);
+	.shifting & {
+		.animation-delay(@scene-delay);
+	}
 }
 
 .m-scene .scene_element--fadein {
