@@ -1,4 +1,7 @@
 // Style
+html {
+	//background-color: @off-black;
+}
 * {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-text-size-adjust: none;
@@ -33,11 +36,11 @@ body {
 	font-family: @font-family-sans-serif;
 	font-weight: 300;
 	font-style: normal;
-	font-size: 20px;
+	font-size: @font-size-base;
 	line-height: 1.28;
 	background-color: @body-bg;
+	color: @text-color;
 }
-
 
 /* Home Page */
 .btn-cover {
@@ -150,9 +153,9 @@ body {
 	width: 100%;
 	.social {
 		margin-bottom: 20px;
-		font-size: @font-size-base + 10;
-		@media (min-width: @screen-sm-min) {
-			font-size: @font-size-base + 6;
+		font-size: 24px;
+		@media (min-width: @screen-lg-min) {
+			font-size: 20px;
 		}
 		li {
 			margin: 0 4px;
@@ -222,5 +225,29 @@ body {
 	.mastfoot,
 	.cover-container {
 		width: 900px;
+	}
+}
+
+// Post Content
+.blog-post {
+	font-size: @font-size-base + 6;
+	font-family: @font-family-serif;
+	line-height: 1.5;
+	section {
+		
+	}
+	h1, h2, h3, h4, h5, h6 {
+		text-align: center;
+	}
+	hr {
+		width: 20%;
+	}
+	a {
+		color: @text-color;
+		text-decoration: underline;
+		transition: all 200ms linear;
+		&:hover {
+			color: @link-hover-color;
+		}
 	}
 }

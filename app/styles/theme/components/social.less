@@ -24,10 +24,10 @@
 		display: inline-block;
 	}
 	a {
-		color: @theme-gray-light;
+		color: @white;
 		.transition(all 250ms linear);
 		&:hover {
-			color: black;
+			color: fade(@white, 60%);
 		}
 	}
 	.dark & {
@@ -38,12 +38,23 @@
 			}
 		}
 	}
+	.menu & {
+		a {
+			color: @white;
+			&:hover {
+				color: fade(@white, 60%);
+			}
+		}
+	}
 }
 
 .social li a.dribbble:hover {
 	color: @bc-dribbble-2;
 	.dark & {
 		color: @white;
+	}
+	.menu & {
+		color: fade(@white, 60%);
 	}
 }
 
@@ -52,6 +63,9 @@
 	.dark & {
 		color: @white;
 	}
+	.menu & {
+		color: fade(@white, 60%);
+	}
 }
 
 .social li a.facebook:hover {
@@ -59,12 +73,18 @@
 	.dark & {
 		color: @white;
 	}
+	.menu & {
+		color: fade(@white, 60%);
+	}
 }
 
 .social li a.twitter:hover {
 	color: @bc-twitter;
 	.dark & {
 		color: @white;
+	}
+	.menu & {
+		color: fade(@white, 60%);
 	}
 }
 

@@ -37,11 +37,11 @@
 			captionItems: []
 		},
 		imageSize: {
-			imageWidth: [1080, 1080, 2400],
-			imageHeight: [1920, 1920, 1536],
-			rightEdge: [400, 400, 812],
-			bottomEdge: [641, 641, 545],
-			bottomPadding: [false, false, false],
+			imageWidth: [1080, 1080, 1080, 2400],
+			imageHeight: [1920, 1920, 1920, 1536],
+			rightEdge: [400, 400, 400, 812],
+			bottomEdge: [641, 641, 641, 545],
+			bottomPadding: [false, false, false, false],
 		},
 		springs: {
 			mainSpring: springSystem.createSpring(),

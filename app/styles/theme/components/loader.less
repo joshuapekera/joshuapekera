@@ -1,0 +1,28 @@
+.spinner {
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    position: relative;
+    display: block;
+  }
+
+  &:before {
+    animation: spinner @spinner-duration @spinner-timing-function @spinner-iteration-count @spinner-direction;
+    width: 80px;
+    height: 80px;
+    border: 1px solid @spinner-fg-color;
+  }
+
+  // ----- Shadow ----- //
+
+  // &:after {
+  //   animation: shadow @spinner-duration @spinner-timing-function @spinner-iteration-count @spinner-direction;
+  //   bottom: -5px;
+  //   height: 25px;
+  //   border-radius: 50%;
+  //   border: 1px solid darken(@spinner-bg-color, 15%);
+  // }
+
+}

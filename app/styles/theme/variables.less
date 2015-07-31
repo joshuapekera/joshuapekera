@@ -30,6 +30,7 @@
 // Basic Colors
 @white:                 #ffffff;
 @black:                 #000000;
+@off-black:							#211e20;
 
 // Color Shades
 @shade-base:            #000;
@@ -78,11 +79,27 @@
 @white00:               fade(@white, 0%);
 
 //** Menu Button Animation
+@button-width-sm: 22px;
+@button-width-md: 26px;
 @button-duration: 100ms;
 @button-size: 100%;
 @button-toggled-size: 1;
 @button-bg: #449a88;
 @button-content-bg: #999;
+
+// Scene transition timers
+@scene-duration: 250ms;
+// Loader Spinner
+// ----- Base ----- //
+@spinner-bg-color: #fdfdfd;
+//@spinner-fg-color: #3fc1f2;
+@spinner-fg-color: #f1d5b7;
+@spinner-accent-color: #272727;
+// ----- Spinner ----- //
+@spinner-duration: 1200ms;
+@spinner-timing-function: cubic-bezier(0.750, 0.000, 0.500, 1.000);
+@spinner-iteration-count: infinite;
+@spinner-direction: normal;
 
 //== Structure
 
@@ -110,9 +127,11 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@nav-bg:								#c34524;
+@body-bg:               @white;
+@footer-bg:							#fafafa;
 //** Global text color on `<body>`.
-@text-color:            @gray-dark;
+@text-color:            @off-black;
 
 //** Global textual link color.
 @link-color:            @theme-blue-light;
@@ -150,8 +169,8 @@
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    inherit;
-@headings-font-weight:    400;
-@headings-line-height:    1.28;
+@headings-font-weight:    300;
+@headings-line-height:    1.5;
 @headings-color:          inherit;
 
 

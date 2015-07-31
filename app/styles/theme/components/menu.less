@@ -31,8 +31,9 @@ nav ul {
 		z-index: 1;
 	}
 	h4 {
-		color: fade(@white, 50%);
-		font-size: @font-size-h5;
+		color: fade(@white, 60%);
+		//color: #f2dec0;
+		font-size: @font-size-h6;
 		font-weight: 600;
 		text-transform:uppercase;
 		visibility:hidden;
@@ -60,6 +61,9 @@ nav ul {
 			.animation-duration(400ms);
 			.animation-delay(400ms);
 		}
+		@media (min-width: @screen-lg-min) {
+			font-size: 20px;
+		}
 		li {
 			margin-right: 2px;
 		}
@@ -68,14 +72,18 @@ nav ul {
 .nav {
 	//color: @white;
 	a {
-		font-size: @font-size-large + 10;
-		font-weight: 300;
-		-webkit-font-smoothing: subpixel-antialiased;// Safari text render fix
-		padding-bottom: 0.5em;
-		color: fade(@white, 80%);
-		.transition(color 200ms);
+		font-size: @font-size-large + 5;
+		font-weight: 400;
+		-webkit-font-smoothing: antialiased;// Safari text render fix
+		//color: fade(@white, 80%);
+		color: @white;
+		.transition(color 250ms);
 		&:hover, &:active, &:focus {
-			color: @white;
+			//color: @white;
+			color: fade(@white, 80%);
+		}
+		@media (min-width: @screen-md-min) {
+			font-size: @font-size-large + 10;
 		}
 	}
 	li:last-of-type {

@@ -24,9 +24,9 @@
 	position: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
-	top: 60px;
+	top: 30px;
 	right: 0;
-	bottom: 40px;
+	bottom: 30px;
 	left: 0;
 	//.backface-visibility(hidden);
 	.user-select(none);
@@ -83,6 +83,7 @@ img {
 	bottom: 0;
 	pointer-events: none;
 	padding-left: 13px;
+	z-index: 2;
 	
 	// js will display once poistion is calculated
 	visibility: hidden;
@@ -125,22 +126,26 @@ img {
 	text-align: center;
 	position: absolute;
 	font-size: 0;// resets inline block children default padding
-	bottom: 32px;
+	bottom: 15px;
 	left: 50%;
 	padding: 0;
 	margin: 0;
 	white-space: nowrap;
+	@media (min-width: @screen-sm-min) {
+		bottom: 32px;
+	}
 }
 
 #nav li {
 	display: inline-block;
 	font-weight: 300;
 	//-webkit-font-smoothing: subpixel-antialiased;
-	font-size: 20px;
+	font-size: 18px;
 	padding: 0 20px;
 	cursor: pointer;
 	position: relative;
 	@media (min-width: @screen-md-min) {
+		font-size: 20px;
 		padding: 0 20px;
 	}
 	

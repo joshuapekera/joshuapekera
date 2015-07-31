@@ -1,13 +1,17 @@
 .myinfo {
 	font-weight: 300;
-		.dark & {
-			//visibility:hidden;
-		}
+	font-size: 16px;
+	line-height: 1.28;
+	@media (min-width: @screen-sm-min) {
+		font-size: 20px;
+	}
 	p.name a {
-		color: @black;
+		font-weight: 300;
+		//color: @theme-gray;
+		color: fade(@black, 70%);
 		.transition(all 250ms linear);
 		&:hover {
-			color: @link-color;
+			color: @black;
 		}
 		.dark & {
 			color: fade(@white, 70%);
@@ -17,6 +21,7 @@
 		}
 	}
 	p.title {
+		//visibility:hidden;
 		color: @theme-gray;
 		margin-top: -1px;
 		.dark & {
@@ -65,13 +70,14 @@
 
 .navicon {
 	position: relative;
-	width: 28px;
+	width: @button-width-sm;
 	height: 1px;
 	border-radius: 1px;
 	background: @button-content-bg;
 	transition: @button-duration;
 	@media (min-width: @screen-md-min) {
 		height: 1px;
+		width: @button-width-md;
 		border-radius: 1px;
 	}
 	.dark & {
@@ -83,13 +89,14 @@
 		content: "";
 		height: 1px;
 		border-radius: 1px;
-		width: 28px;
+		width: @button-width-sm;
 		background: @button-content-bg;
 		position: absolute;
 		transition: @button-duration/2;
 		transition-delay: @button-duration;
 		@media (min-width: @screen-md-min) {
 			height: 1px;
+			width: @button-width-md;
 			border-radius: 1px;
 		}
 		.dark & {
