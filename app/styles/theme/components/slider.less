@@ -1,5 +1,13 @@
+body.dragging * {
+	.user-select(none);
+	.noDrag();
+	.grabbing();
+}
+
 .boards * {
 	.box-sizing(border-box);
+	padding: 0;
+	margin: 0;
 }
 
 #wrapper {
@@ -11,29 +19,44 @@
 }
 
 #slides {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	padding: 0;
+	//position: relative;
+	//height: 100%;
+	//width: 100%;
+	//padding: 0;
+	//margin: 0;
 	//z-index: -48;
+	//.grab();
 }
 
 #slides li {
-	display: inline-block;
-	//background-size: contain;
 	position: fixed;
+	display: inline-block;
 	background-position: center;
 	background-repeat: no-repeat;
-	top: 30px;
+	background-size: contain;
+	top: 20px;
 	right: 0;
-	bottom: 30px;
+	bottom: 50px;
 	left: 0;
-	//.backface-visibility(hidden);
+	.backface-visibility(hidden);
 	.user-select(none);
 	.grab();
 	@media (min-width: @screen-md-min) {
-		top: 40px;
-		bottom: 60px;
+		top: 20px;
+		bottom: 50px;
+	}
+	.dragging & {
+		.grabbing();
+	}
+	
+	&.awwwards {
+		background-image: url('../images/slide-awwwards-sm.jpg');
+		@media (min-width: @screen-md-min) {
+			background-image: url('../images/slide-awwwards-md.jpg');
+		}
+		@media (min-width: @screen-lg-min) {
+			background-image: url('../images/slide-awwwards-lg.jpg');
+		}
 	}
 	
 img {
@@ -52,24 +75,27 @@ img {
 		//z-index: -1;
 		.user-select(none);
 		.noDrag();
+		.grab();
 		&:before {
 			content: "";
 			width: 100%;
 			height: 100%;
 			background-color: transparent;
 		}
-		
-&:empty {
+		&:empty {
 			// top: 50%;
 			// left: 50%;
 			// .translate(-50%, -50%);
 		}
+		.dragging & {
+			.grabbing();
+		}
 	}
 }
 
-#slides.dragging li {
-	.grabbing();
-}
+// #slides.dragging li {
+// 	.grabbing();
+// }
 
 #slides p {
 	font-size: 11px;
@@ -132,7 +158,7 @@ img {
 	margin: 0;
 	white-space: nowrap;
 	@media (min-width: @screen-sm-min) {
-		bottom: 32px;
+		bottom: 30px;
 	}
 }
 
@@ -148,9 +174,36 @@ img {
 		font-size: 20px;
 		padding: 0 20px;
 	}
-	
-a {
+	span {
+		display: block;
+		@media (min-width: @screen-sm-min) {
+			display: block;
+		}
+	}
+	.btn {
+		color: @theme-gray;
+		font-size: @font-size-base + 18;
+		line-height: 16px;
+		padding: 0;
+		text-align: center;
+		pointer-events: all;
+		.user-select(none);
+		.transition(all 150ms linear);
+		&:hover {
+			color: @link-hover-color;
+		}
+	}
+	a {
+		display: inline-block;
+		position: absolute;
+		top: -60px;
+		left: 50%;
+		.translate(-50%, -50%);
+		text-align:center;
 		color: @black;
 		text-decoration: none;
+		@media (min-width: @screen-sm-min) {
+			margin-top: 20px;
+		}
 	}
 }

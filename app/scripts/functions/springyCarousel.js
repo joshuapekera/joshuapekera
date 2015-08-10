@@ -37,17 +37,18 @@
 			captionItems: []
 		},
 		imageSize: {
-			imageWidth: [1080, 1080, 1080, 2400],
-			imageHeight: [1920, 1920, 1920, 1536],
-			rightEdge: [400, 400, 400, 812],
-			bottomEdge: [641, 641, 641, 545],
-			bottomPadding: [false, false, false, false],
+			imageWidth: [1080, 1080, 1200, 1080, 2400],
+			imageHeight: [1920, 1920, 1800, 1920, 1536],
+			rightEdge: [400, 400, 490, 400, 812],
+			bottomEdge: [641, 641, 480, 641, 545],
+			bottomPadding: [false, false, false, false, false],
 		},
 		springs: {
 			mainSpring: springSystem.createSpring(),
 			navigationSpring: springSystem.createSpring()
 		}
 	};
+  
 	jQuery.fn.springyCarousel = function(options) {
 		var defaults = {
 			carouselWrapperSelector: '#wrapper',
@@ -331,7 +332,7 @@
 		springyCarouselGlobals.dragging.isDragging = true;
 		springyCarouselGlobals.viewport.viewportWidth = $('#wrapper').innerWidth();
 		springyCarouselGlobals.springs.mainSpring.setAtRest();
-		$('#slides').addClass('dragging');
+		$('body').addClass('dragging');
 	};
 	continueDragging = function(x) {
 		panVelocity = x - lastX;
@@ -362,7 +363,7 @@
 		springyCarouselGlobals.springs.mainSpring.setVelocity(normalizedVelocity * 30);
 		panVelocity = 0;
 		springyCarouselGlobals.dragging.isDragging = false;
-    $('#slides').removeClass('dragging');
+    $('body').removeClass('dragging');
 	};
 	springs.setupMainSpring = function(friction, tension, callback) {
 		springyCarouselGlobals.springs.mainSpring.setSpringConfig(rebound.SpringConfig.fromOrigamiTensionAndFriction(tension, friction));

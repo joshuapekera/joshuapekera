@@ -44,11 +44,10 @@
 
 		<!-- Include a nav from partials -->
 		
-	
 <main id=main class="app m-scene">
 	<div class=post>
 		<div id=appnav class=appnav>
-	<nav class=menu>
+	<nav id=menu class=menu>
 		<ul class=nav>
 			<li><a href="/">Home</a></li>
 			<li><a href=about.html>About</a></li>
@@ -69,25 +68,37 @@
 
 		<div id=appcontainer class=appcontainer>
 			<div class=overlay></div>
-			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
-				<header id=appheader class=appheader>
-  <div class=myinfo>
-    <p class=name><a href="/">Joshua Pekera</a></p>
-    <p class=title>Swoosh</p>
+			<!-- <div id="appcontent" class="appcontent"> -->
+			<header id=appheader class="appheader appheader--fixed">
+  <div class=appheader-inner>
+    
+    <a href=/work.html class="btn btn-back"></a>
+    
+    <div id=hamburgericon class="menu-button x nss"><div class=navicon></div></div>
+    <!-- <div id="hamburgerbutton" class="hamburger-container"></div> -->
   </div>
-  <a id=hamburgericon class="menu-button x nss"><div class=navicon></div></a>
 </header>
 
+			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
 				<div class=content>
 					
-<article>
-	<section>
+<article class="project swoosh">
+	<div class=jumbotron>
+		<div class=container>
+			<div class=jumbotron-wrapper>
+				<div class=jumbotron-wrapper-inner>
+		  		<div class=jumbotron-inner>
+						<h1>Swoosh</h1>
+			  		<p>Orbis Cryptarius Intransmutabilis Centricus Myrrha Competitivitas Collectivisticus</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class=project-section-dark>
 		<div class=container>
 			<div class=row>
 				<div class=col-sm-12>
-					<h1>Hello World</h1>
-					<img alt="swoosh mockup" data-srcset="../images/project-swoosh-1-sm.jpg 320w, ../images/project-swoosh-1-md.jpg 640w, ../images/project-swoosh-1-lg.jpg 1024w" sizes="(min-width: 36em) 33.3vw, 100vw" class="img-responsive lazyload">
-					
 					<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
 				</div>
 			</div>
@@ -98,20 +109,6 @@
 		<div class=container>
 			<div class=row>
 				<div class=col-sm-12>
-					<h1>Hello World</h1>
-					<img alt="swoosh mockup" data-srcset="../images/project-swoosh-1-sm.jpg 320w, ../images/project-swoosh-1-md.jpg 640w, ../images/project-swoosh-1-lg.jpg 1024w" sizes="(min-width: 36em) 33.3vw, 100vw" class="img-responsive lazyload">
-					
-					<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section>
-		<div class=container>
-			<div class=row>
-				<div class=col-sm-12>
-					<h1>Hello World</h1>
 					<img alt="swoosh mockup" data-srcset="../images/project-swoosh-1-sm.jpg 320w, ../images/project-swoosh-1-md.jpg 640w, ../images/project-swoosh-1-lg.jpg 1024w" sizes="(min-width: 36em) 33.3vw, 100vw" class="img-responsive lazyload">
 					
 					<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>

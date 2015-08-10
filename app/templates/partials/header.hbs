@@ -1,7 +1,14 @@
-<header id="appheader" class="appheader">
-  <div class="myinfo">
-    <p class="name"><a href="/">Joshua Pekera</a></p>
-    <p class="title">{{title}}</p>
+<header id="appheader" class="appheader appheader--fixed">
+  <div class="appheader-inner">
+    {{#if backbutton}}
+    <a href="/work.html" class="btn btn-back"></a>
+    {{else}}
+    <div class="myinfo">
+      <p class="name"><a href="/">Joshua Pekera</a></p>
+      <p class="title">{{title}}</p>
+    </div>
+    {{/if}}
+    <div id="hamburgericon" class="menu-button x nss"><div class="navicon"></div></div>
+    <!-- <div id="hamburgerbutton" class="hamburger-container"></div> -->
   </div>
-  <a id="hamburgericon" class="menu-button x nss"><div class="navicon"></div></a>
 </header>

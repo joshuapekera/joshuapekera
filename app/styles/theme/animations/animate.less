@@ -13,16 +13,16 @@
 @import "mixins.less";
 @import "../mixins.less";
 
-// !Animated Timer Class
+// Animated Timer Class
 //body {-webkit-backface-visibility: hidden;} //fixes antialising issues with text during an animation
 .animated {
-	.animation-duration(1s);
+	.animation-duration(500ms);
 	.animation-fill-mode(both);
 }
 
-// !Animate Classes
+// Animate Classes
 // ------------------
-// !Attention seekers
+// Attention seekers
 @import "keyframes/flash.less";
 @import "keyframes/shake.less";
 @import "keyframes/bounce.less";
@@ -32,7 +32,7 @@
 @import "keyframes/wiggle.less";
 @import "keyframes/pulse.less";
 
-// !Flippers
+// Flippers
 // (currently Webkit, Firefox, &amp; IE10 only):
 @import "keyframes/flip.less";
 @import "keyframes/flipInX.less";
@@ -40,7 +40,7 @@
 @import "keyframes/flipInY.less";
 @import "keyframes/flipOutY.less";
 
-// !Fading entrances
+// Fading entrances
 @import "keyframes/fadeIn.less";
 @import "keyframes/fadeInUp.less";
 @import "keyframes/fadeInDown.less";
@@ -51,7 +51,7 @@
 @import "keyframes/fadeInLeftBig.less";
 @import "keyframes/fadeInRightBig.less";
 
-// !Fading exits
+// Fading exits
 @import "keyframes/fadeOut.less";
 @import "keyframes/fadeOutUp.less";
 @import "keyframes/fadeOutDown.less";
@@ -62,7 +62,7 @@
 @import "keyframes/fadeOutLeftBig.less";
 @import "keyframes/fadeOutRightBig.less";
 
-// !Bouncing entrances
+// Bouncing entrances
 @import "keyframes/bounce.less";
 @import "keyframes/bounceIn.less";
 @import "keyframes/bounceInUp.less";
@@ -74,61 +74,76 @@
 @import "keyframes/easeInRight.less";
 @import "keyframes/easeOutRight.less";
 
-// !Bouncing exits
+// Bouncing exits
 @import "keyframes/bounceOut.less";
 @import "keyframes/bounceOutUp.less";
 @import "keyframes/bounceOutDown.less";
 @import "keyframes/bounceOutLeft.less";
 @import "keyframes/bounceOutRight.less";
 
-// !Scaling entrances
+// Scaling entrances
 @import "keyframes/scaleIn.less";
 @import "keyframes/scaleInBig.less";
 
-// !Scaling exits
+// Scaling exits
 @import "keyframes/scaleOut.less";
 @import "keyframes/scaleOutBig.less";
 
-// !Rotating entrances
+// Rotating entrances
 @import "keyframes/rotateIn.less";
 @import "keyframes/rotateInUpLeft.less";
 @import "keyframes/rotateInUpRight.less";
 @import "keyframes/rotateInDownLeft.less";
 @import "keyframes/rotateInDownRight.less";
 
-// !Rotating exits
+// Rotating exits
 @import "keyframes/rotateOut.less";
 @import "keyframes/rotateOutUpLeft.less";
 @import "keyframes/rotateOutUpRight.less";
 @import "keyframes/rotateOutDownLeft.less";
 @import "keyframes/rotateOutDownRight.less";
 
-// !Lightspeed
+// Sliding entrances
+//@import "keyframes/slideUp.less";
+//@import "keyframes/slideInDown.less";
+@import "keyframes/slideInLeft.less";
+@import "keyframes/slideInRight.less";
+@import "keyframes/slideInUp.less";
+
+// Sliding exits
+//@import "keyframes/slideDown.less";
+@import "keyframes/slideOutDown.less";
+@import "keyframes/slideOutLeft.less";
+@import "keyframes/slideOutRight.less";
+//@import "keyframes/slideOutUp.less";
+
+// Lightspeed
 @import "keyframes/lightSpeedIn.less";
 @import "keyframes/lightSpeedOut.less";
 
-// !Specials
+// Specials
 @import "keyframes/hingeLeft.less";
 @import "keyframes/hingeRight.less";
 @import "keyframes/rollIn.less";
 @import "keyframes/rollOut.less";
 
-// !Beta Keyframes
+// Beta Keyframes
 @import "keyframes/dropUp.less";
 @import "keyframes/dropDown.less";
 
-// !Pop entrances
+// Pop entrances
 //@import "keyframes/popIn.less";
 //@import "keyframes/popInBig.less";
 
-// !Pop exits
+// Pop exits
 //@import "keyframes/popOut.less";
 //@import "keyframes/popOutBig.less";
 
-// !Custom Animate Classes
+// Custom Animate Classes
 // -------------------------
 //@import "keyframes/spinner.less";
 //@import "keyframes/spinner-window.less";
 @import "keyframes/spinner-bounce.less";
+@import "keyframes/slideHeader.less";
 // Add any custom animation delay, duration, count, etc
 @import "scenes.less";

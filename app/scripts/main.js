@@ -8,10 +8,20 @@ $(document).ready(function(){
 
 var site = {};
 var panVelocity = 0;
+var shiftDelay = 500;
 
 // ------------------------------------ //
 // Functions
 // -------------------------------------//
+
+// Kick off the animation class on first load since smoothstate is not yet available
+$('#main').addClass('transition-start');
+	
+// Back button
+function goBack() {
+    window.history.back();
+}
+
 // WOW config
 var wow = new WOW(
 	{
@@ -34,8 +44,10 @@ wow.init();
 var initPage = function(){
 	//FastClick.attach(document.body);
 	//lazyConfig();
+	headroomInit();
 	toggleNavigation();
 	reboundSlider();
+	//createHamburger();
 	dragImage();
 };
 
@@ -45,6 +57,43 @@ var initPage = function(){
 // -------------------------------------//
 var animateItems = function() {
 	
+};
+
+// ------------------------------------ //
+// Headroom
+// -------------------------------------//
+var headroomInit = function() {
+	var header = $('#appheader');
+	var headerHeight = header.innerHeight();
+	header.headroom({
+		// vertical offset in px before element is first unpinned
+  	offset : headerHeight,
+  	// scroll tolerance in px before state changes
+  	tolerance : 0,
+  	// or scroll tolerance per direction
+  	tolerance : {
+    	down : 0,
+    	up : 20
+  	},
+		//scroller: $('#appcontent'),
+		// css classes to apple
+		"classes": {
+			// when element is initialised
+			"initial": "animated",
+			// when scrolling up
+			//"pinned": "appheader--pinned",
+			"pinned": "slideInDown",
+			// when scrolling down
+			//"unpinned": "appheader--unpinned",
+			"unpinned": "slideOutUp",
+			// when above offset
+      top : "appheader--top",
+      // when below offset
+      notTop : "appheader--not-top"
+		}
+	});
+	// to destroy
+	$("#header").headroom("destroy");
 };
 
 // ------------------------------------ //
@@ -63,14 +112,21 @@ var animateItems = function() {
 // };
 
 // ------------------------------------ //
+// Hamburger Icon
+// -------------------------------------//
+var createHamburger = function() {
+   
+
+};
+
+// ------------------------------------ //
 // Toggle Nav
 // -------------------------------------//
 var toggleNavigation = function() {
 	var body = $('body'),
-		content = $('#appcontainer'),
+		container = $('#appcontainer'),
 		navIcon = $('#hamburgericon'),
-		footer = $('#page-footer'),
-		shiftIt = $('#menu a, .menu-button, .overlay'),
+		shiftIt = $('#menu a, .menu-button, .overlay, #hamburgerbutton'),
 		transitionEnd = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
 		
 	shiftIt.on('click', function() {
@@ -78,25 +134,10 @@ var toggleNavigation = function() {
 		navIcon.toggleClass('open');
 		body.addClass('shifting');
 	});
-	content.on(transitionEnd, function() {
+	container.on(transitionEnd, function() {
 		setTimeout(function () {
 			body.removeClass('shifting');
-		}, 400);
-	});
-};
-
-// ------------------------------------ //
-// Close Nav
-// -------------------------------------//
-var delayState = function () {
-	var body = $('body');
-	var navLink = $('#menu a');
-	var main = $('#main');
-	navLink.on('click', function(){
-		main.css({
-			'-webkit-animation-delay': '400ms',
-			'animation-delay': '400ms',
-		});
+		}, shiftDelay);
 	});
 };
 
@@ -130,33 +171,36 @@ var dragImage = function () {
 // -------------------------------------//
 $(function() {
 	'use strict';
+	var $body = $('html, body');
+	var loader = $('#loader');
+	var header = $('#appheader');
 	var options = {
 		prefetch: true,
 		//prefetchOn: 'mouseover',
-		cacheLength: 8,
+		cacheLength: 0,
 		loadingClass: 'is-loading',
 		blacklist: '.nss',
-		development: false,
+		development: true,
 		// Runs before a page load has been started
 		onBefore: function($currentTarget, $container) {
-			//delayState();
-			// Unhide Loader
-			setTimeout(function () {
-				$('#loader').css('display', 'block');
-			}, 800);
 		},
 		// Runs once a page load has been activated
 		onStart: {
 			duration: 2500, // Duration of animation
 			render: function($container) {
 				//$('.myinfo').addClass('fadeOut');
+				// Scroll page back up
+        $body.animate({scrollTop: '0px'}, 0);
+				// Display loader
+				setTimeout(function () {
+					loader.css('display', 'block');
+				}, shiftDelay + 300);
 				// Add CSS animation reversing class
 				$container.addClass('is-exiting');
 				// Restart animation
 				smoothState.restartCSSAnimations();
 				// Started loader animation
-				//$('#loader').css('display', 'block');
-				$('#loader').css({
+				loader.css({
 					'transition': 'all 400ms linear',
 					'opacity': '1',
 					'visibility': 'visible',
@@ -176,7 +220,7 @@ $(function() {
 				// Remove CSS animation reversing class
 				$container.removeClass('is-exiting');
 				// End loader animation
-				$('#loader').css({
+				loader.css({
 					'transition': 'all 0ms linear',
 					'opacity': '0',
 					'visibility': 'hidden',
@@ -191,7 +235,7 @@ $(function() {
 		onAfter: function($container, $newContent) {
 			initPage();
 			// hide loader
-			$('#loader').css('display', 'none');
+			loader.css('display', 'none');
 		}
 	},
 	smoothState = $('#main').smoothState(options).data('smoothState');

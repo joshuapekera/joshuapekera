@@ -10,6 +10,7 @@
     "rebound-js": "~0.0.10",
     "wow": "~1.1.2",
     "smoothstate": "~0.7.2",
+    "headroom.js": "~0.7.0",
     "jquery.transit": "~0.9.12",
     "fontawesome": "~4.3.0",
     "bootstrap": "~3.3.4",

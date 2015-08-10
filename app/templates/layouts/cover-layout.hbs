@@ -2,12 +2,12 @@
 layout: base-parent.hbs
 ---
 <main id="main" class="app m-scene">
-	<div class="cover">
+	<div class="cover {{brightness}}">
 		{{> navigation }}
-		<div id="appcontainer" class="appcontainer {{brightness}}">
+		<div id="appcontainer" class="appcontainer">
 			<div class="overlay"></div>
+			{{> header }}
 			<div id="appcontent" class="appcontent scene_element scene_element--fadeindown">
-				{{> header }}
 				<div class="content">
 	      {{> body }}
 				</div>

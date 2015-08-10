@@ -149,7 +149,8 @@ module.exports = function (grunt) {
         layoutdir: '<%= config.app %>/templates/layouts',
         layout: 'base-parent.hbs',
         partials: ['<%= config.app %>/templates/partials/**/*.hbs'],
-        assets: '/'
+        assets: '/',
+        backbutton: false
       },
       pages: {
         options: {
@@ -162,7 +163,8 @@ module.exports = function (grunt) {
       projects: {
         // override task-level layout
         options: {
-          layout: 'default-layout.hbs'
+          layout: 'default-layout.hbs',
+          backbutton: true
         },
         files: {
           '.tmp/': ['<%= config.app %>/templates/projects/**/*.hbs']

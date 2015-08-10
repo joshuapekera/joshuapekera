@@ -1,3 +1,26 @@
+// .header--fixed {
+// 	position: fixed;
+// 	z-index: 10;
+// 	right: 0;
+// 	left: 0;
+// 	top: 0;
+// }
+.slide {
+    .transition(all .25s ease-in-out);
+}
+
+.slide--reset {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0)
+}
+
+.slide--up {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%)
+}
+
 .myinfo {
 	font-weight: 300;
 	font-size: 16px;
@@ -22,6 +45,7 @@
 	}
 	p.title {
 		//visibility:hidden;
+		display: none;
 		color: @theme-gray;
 		margin-top: -1px;
 		.dark & {
@@ -30,28 +54,34 @@
 	}
 }
 
+.hamburger-container {
+	float: right;
+	//line-height: 1px;
+	//padding: 12px 4px;
+	cursor: pointer;
+}
+
 /* Animated Menu Button */
 .menu-button {
-	//position: relative;
 	float: right;
-	line-height: 1em;
-	padding: 10px 3px;
+	line-height: 1px;
+	padding: 12px 4px;
 	cursor: pointer;
 	//z-index: 3;
 	@media (min-width: @screen-sm-min) {
-		padding: 10px 3px;
+		padding: 12px 4px;
 	}
 	& *,
 	&:before,
 	&:after {
 		.transform(translate3d(0,0,0));
 	}
-	.transition(@button-duration linear);
+	.transition(@button-duration ease-in);
 	cursor: pointer;
 	user-select: none;
 	.navicon:before,
 	.navicon:after {
-		.transition(all @button-duration/2 linear);
+		.transition(all @button-duration/2 ease-in);
 	}
 	&:hover { // Animate icon height on hover
 		.transition(all @button-duration ease-in);
@@ -60,10 +90,10 @@
 			.transition(all @button-duration/2 ease-in);
 		}
 		.navicon:before {
-			top: 8px;
+			top: @button-spacing-top-hover;
 		}
 		.navicon:after {
-			top: -8px;
+			top: @button-spacing-bottom-hover;
 		}
 	}
 }
@@ -71,14 +101,14 @@
 .navicon {
 	position: relative;
 	width: @button-width-sm;
-	height: 1px;
-	border-radius: 1px;
+	height: @button-stroke-height;
+	border-radius: @button-border-radius;
 	background: @button-content-bg;
 	transition: @button-duration;
 	@media (min-width: @screen-md-min) {
-		height: 1px;
+		height: @button-stroke-height;
 		width: @button-width-md;
-		border-radius: 1px;
+		border-radius: @button-border-radius;
 	}
 	.dark & {
 		background: fade(@white, 60%);
@@ -87,27 +117,27 @@
 	&:after {
 		display: block;
 		content: "";
-		height: 1px;
-		border-radius: 1px;
+		height: @button-stroke-height;
+		border-radius: @button-border-radius;
 		width: @button-width-sm;
 		background: @button-content-bg;
 		position: absolute;
 		transition: @button-duration/2;
 		transition-delay: @button-duration;
 		@media (min-width: @screen-md-min) {
-			height: 1px;
+			height: @button-stroke-height;
 			width: @button-width-md;
-			border-radius: 1px;
+			border-radius: @button-border-radius;
 		}
 		.dark & {
 			background: fade(@white, 60%);
 		}
 	}
 	&:before {
-		top: 6px;
+		top: @button-spacing-top;
 	}
 	&:after {
-		top: -6px;
+		top: @button-spacing-bottom;
 	}
 }
 
@@ -130,13 +160,13 @@
 		background: transparent;
 		&:before {
 			.rotate(-45deg);
-			.transition-delay(1.4s);
-			.transition(.5s ease-in-out);
+			.transition-delay(500ms);
+			.transition(500ms ease-in-out);
 		}
 		&:after {
 			.rotate(45deg);
-			.transition-delay(1.4s);
-			.transition(.5s ease-in-out);
+			.transition-delay(500ms);
+			.transition(500ms ease-in-out);
 		}
 	}
 }

@@ -79,14 +79,23 @@
 @white00:               fade(@white, 0%);
 
 //** Menu Button Animation
-@button-width-sm: 22px;
+@button-stroke-height: 2px;
+//@button-border-radius: @button-stroke-height;
+@button-border-radius: 0px;
+@button-width-sm: 26px;
 @button-width-md: 26px;
+@button-spacing-top: 6px;
+@button-spacing-top-hover: 8px;
+@button-spacing-bottom: @button-spacing-top * -1;
+@button-spacing-bottom-hover: @button-spacing-top-hover * -1;
 @button-duration: 100ms;
 @button-size: 100%;
 @button-toggled-size: 1;
 @button-bg: #449a88;
 @button-content-bg: #999;
 
+// Header transition
+@header-duration: 500ms;
 // Scene transition timers
 @scene-duration: 300ms;
 @scene-delay: 600ms;
@@ -94,7 +103,7 @@
 // ----- Base ----- //
 @spinner-bg-color: #fdfdfd;
 //@spinner-fg-color: #3fc1f2;
-@spinner-fg-color: #f1d5b7;
+@spinner-fg-color: @white;
 @spinner-accent-color: #272727;
 // ----- Spinner ----- //
 @spinner-duration: 1200ms;

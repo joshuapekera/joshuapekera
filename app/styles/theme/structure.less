@@ -61,7 +61,7 @@ body {
 	height: auto;
 	//overflow-y: scroll;
 	//height: auto;
-	.scale3D(1, 1, 1);
+	//.scale3D(1, 1, 1);
 	.transition(all 400ms cubic-bezier(0.175, 0.885, 0.335, 1.05));
 	.backface-visibility(hidden);
 	-webkit-font-smoothing: subpixel-antialiased;
@@ -72,6 +72,9 @@ body {
 		left: 0;
 		right: 0;
 		overflow: hidden;
+	}
+	.post & {
+		//position: static;
 	}
 	.shift & {
 		#shift > .right(); // show menu
@@ -112,19 +115,60 @@ body {
 }
 
 .appheader {
-	position: relative;
+	position: fixed;
+	width: 100%;
 	height: 50px;
-	padding: 15px 15px 0;
+	padding: 10px 10px 0;
+	opacity: 1;
+	//transition-delay: 0ms;
+	//transition: opacity 300ms ease-in;
 	// margin-top: 2px;
 	// border-top-left-radius: 8px;
 	// border-top-right-radius: 8px;
 	z-index: 1;
 	@media (min-width: @screen-sm-min) {
 		height: 80px;
-		padding: 30px 30px 0;
+		padding: 25px 25px 0;
+	}
+	.is-exiting & {
+		opacity: 0;
+		//transition: opacity 200ms ease-in;
+	}
+	.shifting .is-exiting & {
+		transition-delay: @scene-delay;
 	}
 	.post & {
-		background-color: @body-bg;
+		//background-color: fade(@body-bg, 80%);
+		//border-bottom: 1px solid #dddddd;
+		//transition: transform 200ms linear;
+		&--fixed {
+			position: fixed;
+			z-index: 1;
+			right: 0;
+			left: 0;
+			top: 80;
+			//background-color: fade(@white, 90%);
+			//background-color: #292F36;
+			//border-bottom: 1px solid fade(@black, 0%);
+			//box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
+		}
+		&--top {
+			border-bottom: 1px solid fade(@black, 0%);
+		}
+		&--top.slideInDown {
+			//transition: background-color @header-duration ease-in, border @header-duration ease-in;
+			transition: background-color @header-duration, box-shadow @header-duration, border @header-duration;
+		}
+		&--not-top.slideInDown {
+			background-color: fade(@white, 90%);
+			//box-shadow: 0 0 1px 0 rgba(0, 0, 0, .15);
+			border-bottom: 1px solid fade(@black, 5%);
+		}
+		&--not-top.slideOutUp {
+			background-color: fade(@white, 0%);
+			//box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0);
+			border-bottom: 1px solid fade(@black, 0%);
+		}
 		.shift & {
 			//background-color: fade(@body-bg, 90%);// fade when open
 		}
@@ -143,7 +187,8 @@ body {
 		//position: relative;// sticky footer
 		//min-height: 100vmin;// sticky footer
 		min-height: 100%;
-		background-color: @body-bg;
+		//background-color: @body-bg;
+		background-color: @nav-bg;
 		.shift & {
 			//background-color: transparent;// fade when open
 		}
@@ -178,6 +223,13 @@ body {
 	.slider & {
 		margin: 0;
 		padding: 0;
+	}
+}
+
+.post article {
+	//padding-top: 70px;
+	@media (min-width: @screen-sm-min) {
+		//padding-top: 80px;
 	}
 }
 

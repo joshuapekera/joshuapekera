@@ -1,0 +1,83 @@
+// Image Mixins
+// - Responsive image
+// - Retina image
+
+
+// Responsive image
+//
+// Keep images from scaling beyond the width of their parents.
+.img-responsive(@display: block) {
+  display: @display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+
+// Retina image
+//
+// Short retina mixin for setting background-image and -size. Note that the
+// spelling of `min--moz-device-pixel-ratio` is intentional.
+.img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+// An image replacement with nested media query for x and y size variables
+.img-retina-media(@file-1x; @file-2x; @width-1x; @height-1x; @media-width:@screen-sm-min) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width:@media-width),
+  only screen and (   min--moz-device-pixel-ratio: 2) and (min-width:@media-width),
+  only screen and (     -o-min-device-pixel-ratio: 2/1) and (min-width:@media-width),
+  only screen and (        min-device-pixel-ratio: 2) and (min-width:@media-width),
+  only screen and (                min-resolution: 192dpi) and (min-width:@media-width),
+  only screen and (                min-resolution: 2dppx) and (min-width:@media-width) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+// An image replacement with a single size variable.
+// useful for contain or cover sizes
+.img-retina-size(@file-1x; @file-2x; @size) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @size;
+  }
+}
+
+// An image replacement with nested media query a single size variable.
+// useful for contain or cover sizes in nested media queries.
+.img-retina-size-media(@file-1x; @file-2x; @size; @media-width:@screen-sm-min) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width:@media-width),
+  only screen and (   min--moz-device-pixel-ratio: 2) and (min-width:@media-width),
+  only screen and (     -o-min-device-pixel-ratio: 2/1) and (min-width:@media-width),
+  only screen and (        min-device-pixel-ratio: 2) and (min-width:@media-width),
+  only screen and (                min-resolution: 192dpi) and (min-width:@media-width),
+  only screen and (                min-resolution: 2dppx) and (min-width:@media-width) {
+    background-image: url("@{file-2x}");
+    background-size: @size;
+  }
+}
