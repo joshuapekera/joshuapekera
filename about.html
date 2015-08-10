@@ -44,7 +44,6 @@
 
 		<!-- Include a nav from partials -->
 		
-	
 <main id=main class="app m-scene">
 	<div class=post>
 		<div id=appnav class=appnav>
@@ -69,15 +68,21 @@
 
 		<div id=appcontainer class=appcontainer>
 			<div class=overlay></div>
-			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
-				<header id=appheader class=appheader>
-  <div class=myinfo>
-    <p class=name><a href="/">Joshua Pekera</a></p>
-    <p class=title>About</p>
+			<!-- <div id="appcontent" class="appcontent"> -->
+			<header id=appheader class="appheader appheader--fixed">
+  <div class=appheader-inner>
+    
+    <div class=myinfo>
+      <p class=name><a href="/">Joshua Pekera</a></p>
+      <p class=title>About</p>
+    </div>
+    
+    <div id=hamburgericon class="menu-button x nss"><div class=navicon></div></div>
+    <!-- <div id="hamburgerbutton" class="hamburger-container"></div> -->
   </div>
-  <a id=hamburgericon class="menu-button x nss"><div class=navicon></div></a>
 </header>
 
+			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
 				<div class=content>
 					
 <article class=blog-post>

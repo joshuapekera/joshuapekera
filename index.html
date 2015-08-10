@@ -45,7 +45,7 @@
 		<!-- Include a nav from partials -->
 		
 <main id=main class="app m-scene">
-	<div class=cover>
+	<div class="cover dark">
 		<div id=appnav class=appnav>
 	<nav id=menu class=menu>
 		<ul class=nav>
@@ -66,17 +66,22 @@
 	</nav>
 </div>
 
-		<div id=appcontainer class="appcontainer dark">
+		<div id=appcontainer class=appcontainer>
 			<div class=overlay></div>
-			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
-				<header id=appheader class=appheader>
-  <div class=myinfo>
-    <p class=name><a href="/">Joshua Pekera</a></p>
-    <p class=title>Product Designer</p>
+			<header id=appheader class="appheader appheader--fixed">
+  <div class=appheader-inner>
+    
+    <div class=myinfo>
+      <p class=name><a href="/">Joshua Pekera</a></p>
+      <p class=title>Product Designer</p>
+    </div>
+    
+    <div id=hamburgericon class="menu-button x nss"><div class=navicon></div></div>
+    <!-- <div id="hamburgerbutton" class="hamburger-container"></div> -->
   </div>
-  <a id=hamburgericon class="menu-button x nss"><div class=navicon></div></a>
 </header>
 
+			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
 				<div class=content>
 	      
 <div class=cover-wrapper>
