@@ -1,22 +1,3 @@
-// .oldsocial {
-// 	display: none; // hidden on mobile
-// 	@media (min-width: @screen-sm-min) {
-// 		display: block;
-// 	}
-// 	li {
-// 		display: inline-block;
-// 		padding-top: 12px;
-// 		padding-right: 4px;
-// 	}
-// 	a {
-// 		color: @theme-gray-light;
-// 		.transition(all 250ms linear);
-// 		&:hover {
-// 			color: black;
-// 		}
-// 	}
-// }
-
 .social {
 	padding: 0;
 	margin: 0;
@@ -46,6 +27,35 @@
 			}
 		}
 	}
+	.mastfoot &, .footer & {
+		margin-bottom: 20px;
+		font-size: 24px;
+		@media (min-width: @screen-lg-min) {
+			font-size: 20px;
+		}
+		li {
+			margin: 0 4px;
+			@media (min-width: @screen-sm-min) {
+				margin: 0 2px;
+			}
+		}
+	}
+	.footer & {
+		display: inline-block;
+  	vertical-align: middle;
+  	line-height: normal;
+		margin: 0;
+		a {
+			color: #cccccc;
+			&:hover {
+				color: @print-black;
+			}
+		}
+	}
+}
+
+.social li a.email {
+	padding-left: 5px;
 }
 
 .social li a.dribbble:hover {
@@ -86,8 +96,4 @@
 	.menu & {
 		color: fade(@white, 60%);
 	}
-}
-
-.email {
-	padding-left: 5px;
 }

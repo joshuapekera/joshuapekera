@@ -31,6 +31,9 @@
 @white:                 #ffffff;
 @black:                 #000000;
 @off-black:							#211e20;
+@print-black:						#1c1e20;
+@black-fade:						#202020;
+@white-romance:					#FDFEFF;
 
 // Color Shades
 @shade-base:            #000;
@@ -139,7 +142,8 @@
 //** Background color for `<body>`.
 @nav-bg:								#c34524;
 @body-bg:               @white;
-@footer-bg:							#fafafa;
+@footer-bg:							@white;
+@footer-border:					#eeeeee;
 //** Global text color on `<body>`.
 @text-color:            @off-black;
 
@@ -178,10 +182,12 @@
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    inherit;
-@headings-font-weight:    300;
+@headings-font-family:    "Neue Helvetica",'colfax-web', "Neue Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//@headings-font-family:    "colfax-web", "Neue Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//@headings-font-family: inherit;
+@headings-font-weight:    lighter;
 @headings-line-height:    1.5;
-@headings-color:          inherit;
+@headings-color:          lighter;
 
 
 //== Iconography

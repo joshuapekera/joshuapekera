@@ -106,19 +106,6 @@ body {
 	bottom: 0px;
 	text-align: center;
 	width: 100%;
-	.social {
-		margin-bottom: 20px;
-		font-size: 24px;
-		@media (min-width: @screen-lg-min) {
-			font-size: 20px;
-		}
-		li {
-			margin: 0 4px;
-			@media (min-width: @screen-sm-min) {
-				margin: 0 2px;
-			}
-		}
-	}
 	blockquote {
 		display: none;
 		font-size: @font-size-base;
@@ -188,14 +175,25 @@ body {
 	font-size: @font-size-base + 6;
 	font-family: @font-family-serif;
 	line-height: 1.5;
+	.page-header {
+		h1 {
+			font-size: @font-size-h1 + 40;
+			//font-weight: normal;
+		}
+	}
 	section {
-		
+		margin-bottom: 60px;
+		&:first-child {
+			margin-top: 0px;
+		}
 	}
 	h1, h2, h3, h4, h5, h6 {
 		text-align: center;
+		//font-family: @font-family-sans-serif;
 	}
 	hr {
 		width: 20%;
+		margin: 30px auto;
 	}
 	a {
 		color: @text-color;
