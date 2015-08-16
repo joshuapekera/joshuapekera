@@ -2,31 +2,31 @@
 	.animation-duration(@scene-duration);
 	.transition-timing-function(ease-in);
 	.animation-fill-mode(both);
-	//.animation-delay(500ms);
+	//.animation-delay(@scene-delay);
 	.shifting & {
-		.animation-delay(@scene-delay);
+		//.animation-delay(@scene-delay);
 	}
 }
 
-.m-scene .scene_element--fadein {
-	.animation-name(fadeIn);
-}
+// .m-scene .scene_element--fadein {
+// 	.animation-name(fadeIn);
+// }
 
 .m-scene .scene_element--fadeindown {
 	.animation-name(fadeInDown);
 }
 
-.m-scene .scene_element--bounceindown {
-	.animation-name(bounceInDown);
-}
-
-.m-scene .scene_element--scalein {
-	.animation-name(scaleIn);
-}
-
-.m-scene .scene_element--scaleinbig {
-	.animation-name(scaleInBig);
-}
+// .m-scene .scene_element--bounceindown {
+// 	.animation-name(bounceInDown);
+// }
+//
+// .m-scene .scene_element--scalein {
+// 	.animation-name(scaleIn);
+// }
+//
+// .m-scene .scene_element--scaleinbig {
+// 	.animation-name(scaleInBig);
+// }
 
 .m-scene.is-exiting .scene_element {
 	.animation-direction(alternate-reverse);

@@ -92,10 +92,13 @@
 @button-spacing-bottom: @button-spacing-top * -1;
 @button-spacing-bottom-hover: @button-spacing-top-hover * -1;
 @button-duration: 100ms;
+@button-toggle-duration: 200ms;
 @button-size: 100%;
 @button-toggled-size: 1;
 @button-bg: #449a88;
 @button-content-bg: #999;
+
+//== Animation
 
 // Header transition
 @header-duration: 500ms;
@@ -113,6 +116,9 @@
 @spinner-timing-function: cubic-bezier(0.750, 0.000, 0.500, 1.000);
 @spinner-iteration-count: infinite;
 @spinner-direction: normal;
+
+// Filter Settings
+@backdrop-blur: 40px;
 
 //== Structure
 
@@ -140,7 +146,7 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@nav-bg:								#c34524;
+@nav-bg:								@black;
 @body-bg:               @white;
 @footer-bg:							@white;
 @footer-border:					#eeeeee;

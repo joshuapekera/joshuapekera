@@ -1,29 +1,28 @@
 // Content
 
 #shift {
-    .left(@xs:@content-left, @sm:@content-sm-left, @md:@content-md-left, @lg:@content-lg-left) {
-        .transform(translate3d(@xs, 0, 0) scale3d(0.85, 0.85, 1));
-            @media (min-width: @screen-sm-min) {
-                .transform(translate3d(@sm, 0, 0) scale3d(0.85, 0.85, 1));
-        }
-            @media (min-width: @screen-md-min) {
-                .transform(translate3d(@md, 0, 0) scale3d(0.85, 0.85, 1));
-        }
-            @media (min-width: @screen-lg-min) {
-                .transform(translate3d(@lg, 0, 0) scale3d(0.85, 0.85, 1));
-        }
+  .right(@xs:@content-right, @sm:@content-sm-right, @md:@content-md-right, @lg:@content-lg-right) {
+    .transform(translate3d(@xs, 0, 0) scale3d(0.85, 0.85, 1));
+        @media (min-width: @screen-sm-min) {
+            .transform(translate3d(@sm, 0, 0) scale3d(0.85, 0.85, 1));
     }
-
-    .right(@xs:@content-right, @sm:@content-sm-right, @md:@content-md-right, @lg:@content-lg-right) {
-        .transform(translate3d(@xs, 0, 0) scale3d(0.85, 0.85, 1));
-            @media (min-width: @screen-sm-min) {
-                .transform(translate3d(@sm, 0, 0) scale3d(0.85, 0.85, 1));
-        }
-            @media (min-width: @screen-md-min) {
-                .transform(translate3d(@md, 0, 0) scale3d(0.85, 0.85, 1));
-        }
-            @media (min-width: @screen-lg-min) {
-                .transform(translate3d(@lg, 0, 0) scale3d(0.85, 0.85, 1));
-        }
+        @media (min-width: @screen-md-min) {
+            .transform(translate3d(@md, 0, 0) scale3d(0.85, 0.85, 1));
     }
+        @media (min-width: @screen-lg-min) {
+            .transform(translate3d(@lg, 0, 0) scale3d(0.85, 0.85, 1));
+    }
+  }
+  .test(@xs:@content-right, @sm:@content-sm-right, @md:@content-md-right, @lg:@content-lg-right) {
+    .transform(translate3d(@xs, 0, 0));
+        @media (min-width: @screen-sm-min) {
+            .transform(translate3d(@sm, 0, 0));
+    }
+        @media (min-width: @screen-md-min) {
+            .transform(translate3d(@md, 0, 0));
+    }
+        @media (min-width: @screen-lg-min) {
+            .transform(translate3d(@lg, 0, 0));
+    }
+  }
 }

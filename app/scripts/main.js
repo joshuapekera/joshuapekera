@@ -9,13 +9,19 @@ $(document).ready(function(){
 var site = {};
 var panVelocity = 0;
 var shiftDelay = 500;
+var transEndEventNames = {
+		'WebkitTransition': 'webkitTransitionEnd', // Saf 6, Android Browser
+		'MozTransition': 'transitionend', // only for FF < 15
+		'transition': 'transitionend' // IE10, Opera, Chrome, FF 15+, Saf 7+
+	},
+	transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
 
 // ------------------------------------ //
 // Functions
 // -------------------------------------//
 
 // Kick off the animation class on first load since smoothstate is not yet available
-$('#main').addClass('transition-start');
+//$('#main').addClass('transition-start');
 	
 // Back button
 function goBack() {
@@ -23,20 +29,20 @@ function goBack() {
 }
 
 // WOW config
-var wow = new WOW(
-	{
-		boxClass:     'wow',      // animated element css class (default is wow)
-		animateClass: 'animated', // animation css class (default is animated)
-		offset:       0,          // distance to the element when triggering the animation (default is 0)
-		mobile:       true,       // trigger animations on mobile devices (default is true)
-		live:         true,       // act on asynchronously loaded content (default is true)
-		callback:     function(box) {
-			// the callback is fired every time an animation is started
-			// the argument that is passed in is the DOM node being animated
-		}
-	}
-);
-wow.init();
+// var wow = new WOW(
+// 	{
+// 		boxClass:     'wow',      // animated element css class (default is wow)
+// 		animateClass: 'animated', // animation css class (default is animated)
+// 		offset:       0,          // distance to the element when triggering the animation (default is 0)
+// 		mobile:       true,       // trigger animations on mobile devices (default is true)
+// 		live:         true,       // act on asynchronously loaded content (default is true)
+// 		callback:     function(box) {
+// 			// the callback is fired every time an animation is started
+// 			// the argument that is passed in is the DOM node being animated
+// 		}
+// 	}
+// );
+// wow.init();
 // ------------------------------------ //
 // Initialize Page
 // -------------------------------------//
@@ -49,14 +55,6 @@ var initPage = function(){
 	reboundSlider();
 	//createHamburger();
 	dragImage();
-};
-
-
-// ------------------------------------ //
-// Animate Elements
-// -------------------------------------//
-var animateItems = function() {
-	
 };
 
 // ------------------------------------ //
@@ -73,7 +71,7 @@ var headroomInit = function() {
   	// or scroll tolerance per direction
   	tolerance : {
     	down : 0,
-    	up : 20
+    	up : 0
   	},
 		//scroller: $('#appcontent'),
 		// css classes to apple
@@ -123,22 +121,51 @@ var createHamburger = function() {
 // Toggle Nav
 // -------------------------------------//
 var toggleNavigation = function() {
-	var body = $('body'),
-		container = $('#appcontainer'),
-		navIcon = $('#hamburgericon'),
-		shiftIt = $('#menu a, .menu-button, .overlay, #hamburgerbutton'),
-		transitionEnd = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
-		
-	shiftIt.on('click', function() {
+	var body = $('body');
+	var container = $('#appcontainer');
+	var navIcon = $('#hamburgericon');
+	var shiftIt = $('#menu a, .menu-button, .overlay, #hamburgerbutton');
+	var brand = $('#brand');
+	// we use touchstart and touchend events on buttons
+	var enterEvent = "touchstart";
+	var leaveEvent = "touchend";
+	// we use mousedown and mouseup events on big items
+	var enterBigEvent = "mousedown";
+	var leaveBigEvent = "mouseup";
+	if(!("ontouchstart" in window)){
+	    // if no touch we use mouseenter and mouseleave events on buttons and big items
+	    enterEvent = enterBigEvent = "mouseenter";
+	    leaveEvent = leaveBigEvent = "mouseleave";
+	};
+	// Add transform3D to container
+	// navIcon.on(enterEvent, function(e){
+	// 	body.toggleClass('shift--start');
+	// });
+	
+	// navIcon.on(leaveEvent, function(e){
+  //   body.removeClass('shift--start');
+	// });
+	
+	shiftIt.on('click', function(e) {
 		body.toggleClass('shift');
 		navIcon.toggleClass('open');
-		body.addClass('shifting');
 	});
-	container.on(transitionEnd, function() {
-		setTimeout(function () {
-			body.removeClass('shifting');
-		}, shiftDelay);
-	});
+	
+	// shiftIt.on('click', function() {
+	// 	body.addClass('shifting');
+	// 	setTimeout(function () {
+	// 		body.toggleClass('shift');
+	// 		navIcon.toggleClass('open');
+	// 	}, 16);
+	// 	// body.toggleClass('shift');
+	// 	// navIcon.toggleClass('open');
+	// 	// body.addClass('shifting');
+	// });
+	// container.on(transEndEventName, function() {
+	// 	setTimeout(function () {
+	// 		body.removeClass('shifting');
+	// 	}, 500);
+	// });
 };
 
 // ------------------------------------ //
@@ -172,6 +199,7 @@ var dragImage = function () {
 $(function() {
 	'use strict';
 	var $body = $('html, body');
+	var body = $('body');
 	var loader = $('#loader');
 	var header = $('#appheader');
 	var options = {
@@ -180,9 +208,12 @@ $(function() {
 		cacheLength: 0,
 		loadingClass: 'is-loading',
 		blacklist: '.nss',
-		development: true,
+		development: false,
 		// Runs before a page load has been started
 		onBefore: function($currentTarget, $container) {
+			if (body.hasClass('shift')) {
+				body.removeClass('shift');
+			};
 		},
 		// Runs once a page load has been activated
 		onStart: {
