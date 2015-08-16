@@ -30,7 +30,7 @@
 		<script src=scripts/holder.js></script>
 	
 
-	<body>
+	<body class=shift--closed>
 		<!--[if lt IE 10]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -48,13 +48,14 @@
 	<div class=post>
 		<div id=appnav class=appnav>
 	<nav id=menu class=menu>
-		<ul class=nav>
+		<ul id=menunav class=nav>
 			<li><a href="/">Home</a></li>
 			<li><a href=about.html>About</a></li>
 			<li><a href=work.html>Work</a></li>
 			<!-- <li><a href="ideas.html">Ideas</a></li> -->
 		</ul>
-		<h4>Connect</h4>
+	</nav>
+	<footer class=appnav-footer>
 		<ul class=social>
 	<li><a class=facebook href=https://facebook.com/joshuapekera target=_blank><i class="fa fa-facebook-official"></i></a></li>
 	<li><a class=twitter href=https://twitter.com/joshuapekera target=_blank><i class="fa fa-twitter"></i></a></li>
@@ -63,12 +64,10 @@
 	<li><a href="mailto:joshuapekera@me.com?subject=Joshua, Lets chat!"><i class="fa fa-envelope"></i></a></li>
 </ul>
 
-	</nav>
+	</footer>
 </div>
 
 		<div id=appcontainer class=appcontainer>
-			<div class=overlay></div>
-			<!-- <div id="appcontent" class="appcontent"> -->
 			<header id=appheader class="appheader appheader--fixed">
   <div class=appheader-inner>
     
@@ -79,26 +78,36 @@
   </div>
 </header>
 
+			<div class=overlay></div>
+			<div class=filter></div>
 			<div id=appcontent class="appcontent scene_element scene_element--fadeindown">
 				<div class=content>
 					
 <article class="project swoosh">
 	<div class=jumbotron>
 		<div class=container>
-			<div class=jumbotron-wrapper>
-				<div class=jumbotron-wrapper-inner>
-		  		<div class=jumbotron-inner>
-						<h1>Swoosh</h1>
-			  		<p>Orbis Cryptarius Intransmutabilis Centricus Myrrha Competitivitas Collectivisticus</p>
-					</div>
+			<div class=row>
+				<div class="col-sm-10 col-sm-offset-1">
+					<!-- <img alt="swoosh mockup"
+					data-srcset="../images/project-swoosh-hero-sm.jpg 320w, ../images/project-swoosh-hero-md.jpg 640w, ../images/project-swoosh-hero-lg.jpg 1024w" sizes="(min-width: 36em) 33.3vw, 100vw" class="img-responsive lazyload" /> -->
+					<img src=../images/project-swoosh-hero-lg.jpg alt="" class="img-responsive">
 				</div>
+			</div>
+			<div class=copy>
+				<h1>Swoosh</h1>
+				<p class=lead>Automate and control your home ceiling fans.</p>
 			</div>
 		</div>
 	</div>
-	<section class=project-section-dark>
+
+	<section>
 		<div class=container>
 			<div class=row>
 				<div class=col-sm-12>
+					<img src=../images/project-swoosh-1-lg.jpg alt="" class="img-responsive">
+					<!-- <img alt="swoosh mockup"
+		      data-srcset="../images/project-swoosh-1-sm.jpg 320w, ../images/project-swoosh-1-md.jpg 640w, ../images/project-swoosh-1-lg.jpg 1024w" sizes="(min-width: 36em) 33.3vw, 100vw" class="img-responsive lazyload" /> -->
+					
 					<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
 				</div>
 			</div>
@@ -109,7 +118,9 @@
 		<div class=container>
 			<div class=row>
 				<div class=col-sm-12>
-					<img alt="swoosh mockup" data-srcset="../images/project-swoosh-1-sm.jpg 320w, ../images/project-swoosh-1-md.jpg 640w, ../images/project-swoosh-1-lg.jpg 1024w" sizes="(min-width: 36em) 33.3vw, 100vw" class="img-responsive lazyload">
+					<img src=../images/project-swoosh-1-lg.jpg alt="" class="img-responsive">
+					<!-- <img alt="swoosh mockup"
+		      data-srcset="../images/project-swoosh-1-sm.jpg 320w, ../images/project-swoosh-1-md.jpg 640w, ../images/project-swoosh-1-lg.jpg 1024w" sizes="(min-width: 36em) 33.3vw, 100vw" class="img-responsive lazyload" /> -->
 					
 					<p>Dentifrangibulum Brachycatalecticum Historialiter Spissitudo Speculatoria Ex Edo Scorteum Mena Raphaninus Circumductio Incorruptibiliter</p>
 				</div>
