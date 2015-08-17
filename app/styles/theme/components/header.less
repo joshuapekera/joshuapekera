@@ -1,35 +1,57 @@
-.slide {
-    .transition(all .25s ease-in-out);
-}
 
-.slide--reset {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0)
-}
+.glyph {
+  display: inline-block;
+  text-align: center;
+	color: fade(@black, 60%);
+  padding: 4px 9px;
+	border-radius: 50%;
+	background-color: transparent;
+  border: 1px solid #dddddd;
+	.transition(all 100ms linear);
+	@media (min-width: @screen-lg-min) {
+		.transition(all 200ms linear);
+	}
+	.shift .appheader & {
+    color: @navbar-inverse-link-color;
+    border: 1px solid @navbar-inverse-link-color;
+  }
 
-.slide--up {
-    -webkit-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    transform: translateY(-100%)
+  &:hover,
+  &:focus,
+	&:active,
+  &.active  {
+		color: @link-hover-color;
+		border-color: @link-hover-color;
+		outline: 0; // moz fix
+    .shift .appheader & {
+      color: @navbar-inverse-link-hover-color;
+  		border-color: @navbar-inverse-link-hover-color;
+    }
+		@media (min-width: @screen-lg-min) {
+			background-color: transparent;
+		}
+  }
 }
 
 .myinfo {
 	font-weight: 300;
 	font-size: 18px;
-	line-height: 1.28;
+	line-height: 1.3;
 	@media (min-width: @screen-sm-min) {
 		font-size: 20px;
 	}
 	p.name a {
 		font-weight: 500;
 		//color: @theme-gray;
-		color: #a5a5a5;
+		color: @navbar-default-brand-color;
 		.transition(all 250ms linear);
+    .shift & {
+      color: @navbar-inverse-brand-color;
+    }
 		&:hover {
-			color: @black;
+			color: @navbar-default-brand-hover-color;
       .shift & {
-        color: @white;
+        color: @navbar-inverse-brand-hover-color;
       }
 		}
 		.dark & {

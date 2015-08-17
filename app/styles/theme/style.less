@@ -171,8 +171,18 @@ body {
 	}
 }
 
+// Page Type Layout
+article.page {
+	.post & {
+		padding-top: 50px;
+		@media (min-width: @screen-sm-min) {
+			padding-top: 100px;
+		}
+	}
+}
+
 // Post Content
-.blog-post {
+.page, .blog-post {
 	font-size: @font-size-base + 6;
 	font-family: @font-family-serif;
 	line-height: 1.5;

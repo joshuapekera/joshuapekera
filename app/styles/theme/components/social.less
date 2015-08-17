@@ -1,34 +1,11 @@
+// Social Icon Layout
 .social {
 	padding: 0;
 	margin: 0;
 	li {
 		display: inline-block;
 	}
-	a {
-		color: @white;
-		.transition(all 250ms linear);
-		&:hover {
-			color: fade(@white, 60%);
-		}
-	}
-	.dark & {
-		a {
-			color: fade(@white, 60%);
-			&:hover {
-				color: @white;
-			}
-		}
-	}
-	.menu & {
-		a {
-			color: @white;
-			&:hover {
-				color: fade(@white, 60%);
-			}
-		}
-	}
-	.mastfoot &, .footer & {
-		margin-bottom: 20px;
+	.footer &, .appnav-footer & {
 		font-size: 24px;
 		@media (min-width: @screen-lg-min) {
 			font-size: 20px;
@@ -40,60 +17,92 @@
 			}
 		}
 	}
+	.appnav-footer & {
+		margin-top: 40px;
+		text-align: center;
+		visibility:hidden;
+		.animation-name(fadeOutDown);
+		.animation-duration(50ms);
+		.transition-timing-function(ease-in);
+		.animation-fill-mode(both);
+		.shift & {
+			visibility:visible;
+			.animation-name(fadeInUp);
+			.animation-duration(400ms);
+			.animation-delay(450ms);
+		}
+		@media (min-width: @screen-sm-min) {
+			text-align: center;
+		}
+	}
 	.footer & {
 		display: inline-block;
   	vertical-align: middle;
   	line-height: normal;
-		margin: 0;
+	}
+}
+
+// Social Icon Color
+.social {
+	a {
+		color: fade(@white, 60%);
+		.transition(all 250ms linear);
+		&:hover {
+			color: @white;
+		}
+	}
+}
+.social--color {
+	a.dribbble {
+		&:hover {
+			color: @bc-dribbble-2;
+			.dark & {
+				color: @white;
+			}
+		}
+	}
+	a.linkedin {
+		&:hover {
+			color: @bc-linkedin;
+			.dark & {
+				color: @white;
+			}
+		}
+	}
+	a.facebook {
+		&:hover {
+			color: @bc-facebook;
+			.dark & {
+				color: @white;
+			}
+		}
+	}
+	a.twitter {
+		&:hover {
+			color: @bc-twitter;
+			.dark & {
+				color: @white;
+			}
+		}
+	}
+	a.mail {
+		&:hover {
+			color: @print-black;
+			.dark & {
+				color: @white;
+			}
+		}
+	}
+}
+
+.social {
+	.footer & {
 		a {
 			color: #cccccc;
 			&:hover {
 				color: @print-black;
 			}
 		}
-	}
-}
-
-.social li a.email {
-	padding-left: 5px;
-}
-
-.social li a.dribbble:hover {
-	color: @bc-dribbble-2;
-	.dark & {
-		color: @white;
-	}
-	.menu & {
-		color: fade(@white, 60%);
-	}
-}
-
-.social li a.linkedin:hover {
-	color: @bc-linkedin;
-	.dark & {
-		color: @white;
-	}
-	.menu & {
-		color: fade(@white, 60%);
-	}
-}
-
-.social li a.facebook:hover {
-	color: @bc-facebook;
-	.dark & {
-		color: @white;
-	}
-	.menu & {
-		color: fade(@white, 60%);
-	}
-}
-
-.social li a.twitter:hover {
-	color: @bc-twitter;
-	.dark & {
-		color: @white;
-	}
-	.menu & {
-		color: fade(@white, 60%);
+		.social--color();
 	}
 }

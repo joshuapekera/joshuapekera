@@ -10,7 +10,6 @@ nav ul {
 }
 
 .menu {
-	//z-index: auto;
 	position: absolute;
 	background-color: transparent;
 	top: 50%;
@@ -35,7 +34,6 @@ nav ul {
 		display: none;
 		text-align: center;
 		color: fade(@white, 60%);
-		//color: #f2dec0;
 		font-size: @font-size-h6;
 		font-weight: 600;
 		text-transform:uppercase;
@@ -61,13 +59,10 @@ nav ul {
 		font-size: @font-size-large + 10;
 		font-weight: 400;
 		text-align: center;
-		-webkit-font-smoothing: antialiased;// Safari text render fix
-		//color: fade(@white, 80%);
 		color: @white;
 		.transition(color 250ms);
 		&:hover, &:active, &:focus {
-			//color: @white;
-			color: fade(@white, 80%);
+			color: fade(@white, 60%);
 		}
 		@media (min-width: @screen-md-min) {
 			font-size: @font-size-large + 10;
@@ -126,30 +121,8 @@ nav ul {
 	bottom: 0px;
 	right: 50%; //menu is on the right
 	.translate(50%, -50%);
-	z-index: 10;
-	.social {
-		margin-top: 40px;
-		text-align: center;
-		font-size: 24px;
-		visibility:hidden;
-		.animation-name(fadeOutDown);
-		.animation-duration(50ms);
-		.transition-timing-function(ease-in);
-		.animation-fill-mode(both);
-		.shift & {
-			visibility:visible;
-			.animation-name(fadeInUp);
-			.animation-duration(400ms);
-			.animation-delay(450ms);
-		}
-		@media (min-width: @screen-sm-min) {
-			text-align: center;
-		}
-		@media (min-width: @screen-lg-min) {
-			font-size: 20px;
-		}
-		li {
-			margin: 0 4px;
-		}
+	width: 100%;
+	.shift & {
+		z-index: 10;
 	}
 }

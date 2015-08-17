@@ -94,7 +94,7 @@
 @button-duration: 100ms;
 @button-toggle-duration: 200ms;
 @button-size: 100%;
-@button-toggled-size: 1;
+@button-toggled-size: .9;
 @button-bg: #449a88;
 @button-content-bg: #999;
 
@@ -146,7 +146,7 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@nav-bg:								@black;
+@nav-bg:								@print-black;
 @body-bg:               @white;
 @footer-bg:							@white;
 @footer-border:					#eeeeee;
@@ -498,8 +498,8 @@
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
-@navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-color:               #a5a5a5;
+@navbar-default-brand-hover-color:         @print-black;
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
@@ -515,7 +515,7 @@
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 lighten(@gray-light, 15%);
+@navbar-inverse-link-color: #a5a5a5;
 @navbar-inverse-link-hover-color:           #fff;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
@@ -524,8 +524,8 @@
 @navbar-inverse-link-disabled-bg:           transparent;
 
 // Inverted navbar brand label
-@navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-color:                #a5a5a5;
+@navbar-inverse-brand-hover-color:          @white;
 @navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar toggle
