@@ -1,19 +1,20 @@
 
 .glyph {
   display: inline-block;
+  height: 28px;
+  width: 28px;
+  font-size: 14px;
   text-align: center;
-	color: fade(@black, 60%);
-  padding: 4px 9px;
+  line-height: 1.2;
+	color: #999;
+  padding: 4px 10px 4px 8px;
 	border-radius: 50%;
 	background-color: transparent;
-  border: 1px solid #dddddd;
-	.transition(all 100ms linear);
-	@media (min-width: @screen-lg-min) {
-		.transition(all 200ms linear);
-	}
+  border: 2px solid #999;
+	.transition(all 200ms linear);
 	.shift .appheader & {
     color: @navbar-inverse-link-color;
-    border: 1px solid @navbar-inverse-link-color;
+    border: 2px solid @navbar-inverse-link-color;
   }
 
   &:hover,
