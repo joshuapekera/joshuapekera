@@ -52,6 +52,7 @@ var initPage = function(){
 	//lazyConfig();
 	headroomInit();
 	toggleNavigation();
+	toggleDelay();
 	reboundSlider();
 	//createHamburger();
 	dragImage();
@@ -110,11 +111,14 @@ var headroomInit = function() {
 // };
 
 // ------------------------------------ //
-// Hamburger Icon
+// Nav Transition End
 // -------------------------------------//
-var createHamburger = function() {
-   
-
+var navTransEnd = function() {
+	var body = $('body');
+	var nav = $('#appnav');
+	nav.on(transEndEventName, function() {
+		body.removeClass('shifting');
+	});
 };
 
 // ------------------------------------ //
@@ -122,34 +126,33 @@ var createHamburger = function() {
 // -------------------------------------//
 var toggleNavigation = function() {
 	var body = $('body');
-	var container = $('#appcontainer');
+	var nav = $('#appnav');
+	var navLink = $('#brand, #menu a');
 	var navIcon = $('#hamburgericon');
-	var shiftIt = $('#menu a, .menu-button, .overlay, #hamburgerbutton');
+	var container = $('#appcontainer');
+	var toggleNav = $('#hamburgericon');
 	var brand = $('#brand');
-	// we use touchstart and touchend events on buttons
-	var enterEvent = "touchstart";
-	var leaveEvent = "touchend";
-	// we use mousedown and mouseup events on big items
-	var enterBigEvent = "mousedown";
-	var leaveBigEvent = "mouseup";
-	if(!("ontouchstart" in window)){
-	    // if no touch we use mouseenter and mouseleave events on buttons and big items
-	    enterEvent = enterBigEvent = "mouseenter";
-	    leaveEvent = leaveBigEvent = "mouseleave";
-	};
-	// Add transform3D to container
-	// navIcon.on(enterEvent, function(e){
-	// 	body.toggleClass('shift--start');
-	// });
 	
-	// navIcon.on(leaveEvent, function(e){
-  //   body.removeClass('shift--start');
-	// });
-	
-	shiftIt.on('click', function(e) {
+	toggleNav.on('click', function() {
 		body.toggleClass('shift');
-		navIcon.toggleClass('open');
+		body.toggleClass('delay');
+		if (body.hasClass('shift')) {
+			body.addClass('delay');
+		};
+		body.addClass('shifting');
+		nav.on(transEndEventName, function() {
+			body.removeClass('shifting');
+		});
 	});
+	
+	// nav.on(transEndEventName, function() {
+	// 	body.removeClass('shifting');
+	// 	if (body.hasClass('delay')) {
+	// 		setTimeout(function () {
+	// 			body.removeClass('delay');
+	// 		}, 500);
+	// 	}
+	// });
 	
 	// shiftIt.on('click', function() {
 	// 	body.addClass('shifting');
@@ -166,6 +169,28 @@ var toggleNavigation = function() {
 	// 		body.removeClass('shifting');
 	// 	}, 500);
 	// });
+};
+
+// ------------------------------------ //
+// Toggle Delay
+// -------------------------------------//
+var toggleDelay = function() {
+	var body = $('body');
+	var nav = $('#appnav');
+	var navLink = $('#brand, #menu a');
+	
+	navLink.on('click', function() {
+		if (body.hasClass('shift delay')) {
+			body.removeClass('shift');
+			body.addClass('shifting');
+			nav.on(transEndEventName, function() {
+				body.removeClass('shifting');
+				setTimeout(function () {
+					body.removeClass('delay');
+				}, 2000);
+			});
+		};
+	});
 };
 
 // ------------------------------------ //
@@ -200,20 +225,20 @@ $(function() {
 	'use strict';
 	var $body = $('html, body');
 	var body = $('body');
+	var nav = $('#appnav');
 	var loader = $('#loader');
 	var header = $('#appheader');
+	var navLink = $('#brand, #menu a');
 	var options = {
 		prefetch: true,
-		//prefetchOn: 'mouseover',
+		prefetchOn: 'mouseover',
 		cacheLength: 0,
 		loadingClass: 'is-loading',
 		blacklist: '.nss',
 		development: false,
 		// Runs before a page load has been started
 		onBefore: function($currentTarget, $container) {
-			if (body.hasClass('shift')) {
-				body.removeClass('shift');
-			};
+			
 		},
 		// Runs once a page load has been activated
 		onStart: {

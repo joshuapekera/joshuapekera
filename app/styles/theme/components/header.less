@@ -1,3 +1,39 @@
+.appheader-inner {
+  position: relative;
+  display: block;
+}
+
+.glyph-back {
+  color: #999;
+  font-size: 40px;
+  height: 18px;
+  line-height: 18px;
+  .transition(all 200ms linear);
+  &:before {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 18px;
+  }
+  .shift .appheader & {
+    color: @navbar-inverse-link-color;
+  }
+  
+  &:hover {
+    color: @link-hover-color;
+    outline: 0; // moz fix
+    .shift & {
+      color: @navbar-inverse-link-hover-color;
+    }
+  }
+  
+  &:focus, &:active, &.active {
+    color: @link-hover-color;
+    outline: 0; // moz fix
+    .shift & {
+      color: @navbar-inverse-link-hover-color;
+    }
+  }
+}
 
 .glyph {
   display: inline-block;
@@ -55,11 +91,20 @@
         color: @navbar-inverse-brand-hover-color;
       }
 		}
+    &:focus, &:active, &.active {
+      color: @navbar-default-brand-color;
+      .shift & {
+        color: @navbar-inverse-brand-hover-color;
+      }
+    }
 		.dark & {
 			color: fade(@white, 70%);
 			&:hover {
 				color: @white;
 			}
+      &:focus, &:active, &.active {
+        color: @white;
+      }
 		}
 	}
 	p.title {
@@ -109,10 +154,14 @@
 			.transition(all @button-duration/2 ease-in);
 		}
 		.navicon:before {
-			top: @button-spacing-top-hover;
+      .no-touch & {
+			  top: @button-spacing-top-hover;
+      }
 		}
 		.navicon:after {
-			top: @button-spacing-bottom-hover;
+      .no-touch & {
+        top: @button-spacing-bottom-hover;
+      }
 		}
 	}
 }
@@ -141,7 +190,7 @@
 		width: @button-width-sm;
 		background: @button-content-bg;
 		position: absolute;
-		transition: @button-duration/2;
+		transition: @button-duration;
 		transition-delay: @button-duration;
 		@media (min-width: @screen-md-min) {
 			height: @button-stroke-height;
@@ -160,21 +209,24 @@
 	}
 }
 
-.open:not(.steps) .navicon:before,
-.open:not(.steps) .navicon:after {
+.shift:not(.steps) .navicon:before,
+.shift:not(.steps) .navicon:after {
 	top: 0 !important;
 }
 
-.open .navicon:before,
-.open .navicon:after {
+.shift .navicon:before,
+.shift .navicon:after {
 	.transition(@button-duration);
 }
 
-.open { // scale when X
-	.transform(scale(@button-toggled-size));
+.shift .x { // scale when X
+  .transform(scale(@button-toggled-size));
+  @media (min-width: @screen-sm-min) {
+    .transform(scale(@button-toggled-size-lg));
+  }
 }
 
-.open.x {// Open and transition to a X
+.shift .x {// Open and transition to a X
 	.navicon {
 		background: transparent;
 		&:before {

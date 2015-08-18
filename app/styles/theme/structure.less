@@ -43,11 +43,26 @@ body {
 	height: auto;
 	overflow: hidden;
 	background-color: @nav-bg;
-	//z-index: -47;
-	// background: url("../images/background-lg.jpg");
-	// background-size: cover;
-	// background-position: center center;
-	// background-repeat: no-repeat;
+	//opacity: 1;
+	// .transition(~"background-color 0ms ease-in, opacity 0ms ease-in");
+	.is-exiting & {
+		//opacity: 1;
+	}
+	.shift & {
+		//opacity: 1;
+		// .transition(~"background-color 0ms ease-in, opacity 0ms ease-in");
+	}
+	.shifting & {
+		//opacity: 1;
+	}
+	.shift &, .shifting & {
+		.backdrop-blur(@backdrop-blur);// filter experiment
+		background-color: fade(@black, 90%);// filter
+		z-index: 47;
+		.dark & {
+			background-color: fade(@black, 85%);// filter experiment
+		}
+	}
 }
 
 .appcontainer {
@@ -101,31 +116,10 @@ body {
 	cursor: pointer;
 	display: none;// display under shift
 	opacity: 0;// display under shift
-	//.transition(opacity 500ms easein);
-	//background-color: fade(@black, 10%);// filter experiment
-	//-webkit-backdrop-filter: blur(20px);// filter experiment
 	.shift & {
 		display: block;
 		opacity: 1;
 		overflow-x: hidden;
-	}
-	// .loading & {
-	// 	display: block;
-	// 	opacity: 1;
-	// 	background-color: @body-bg;
-	// }
-}
-
-.filter {
-	.overlay();
-	z-index: 1;
-	background-color: fade(@black, 90%);// filter experiment
-	.backdrop-blur(@backdrop-blur);// filter experiment
-	.dark & {
-		background-color: fade(@black, 85%);// filter experiment
-	}
-	.shift & {
-		opacity: 1;
 	}
 }
 
@@ -135,13 +129,12 @@ body {
 	right: 0;
 	left: 0;
 	width: 100%;
-	//height: 50px;
+	//height: 56px;
 	padding: 15px;
 	opacity: 1;
 	z-index: 47;
-	//background-color: @black;
 	@media (min-width: @screen-sm-min) {
-		//height: 80px;
+		//height: 77px;
 		padding: 25px;
 	}
 	.is-exiting & {
@@ -150,10 +143,24 @@ body {
 	.shifting .is-exiting & {
 		transition-delay: @scene-delay;
 	}
+	
 	.post & {
-		.backdrop-blur(0px);// filter experiment
+		// Transitions while scrolling
+		.backdrop-blur(@backdrop-blur);// filter experiment
+		@media (min-width: @screen-sm-min) {
+			.backdrop-blur(0);// filter experiment
+		}
 		&--top {
-			border-bottom: 1px solid fade(@black, 0%);
+			background-color: fade(@white, 100%);
+			border-bottom: 1px solid fade(@black, 10%);
+			@media (min-width: @screen-sm-min){
+				background-color: fade(@white, 0%);
+				border-bottom: 1px solid fade(@black, 0%);
+			}
+			.shift &, .shifting & {
+				background-color: fade(@white, 0%);
+				border-bottom: 1px solid fade(@black, 0%);
+			}
 		}
 		&--top.slideInDown {
 			transition: background-color @header-duration, box-shadow @header-duration, border @header-duration;
@@ -162,7 +169,7 @@ body {
 			}
 		}
 		&--not-top.slideInDown {
-			background-color: fade(@white, 90%);
+			background-color: fade(@white, 80%);
 			border-bottom: 1px solid fade(@black,10%);
 			.backdrop-blur(@backdrop-blur);// filter experiment
 		}
@@ -172,6 +179,15 @@ body {
 		}
 		.shift & {
 			//background-color: fade(@body-bg, 90%);// fade when open
+		}
+	}
+}
+
+article {
+	.post & {
+		padding-top: 56px; // Offset mobile content from header
+		@media (min-width: @screen-sm-min) {
+			padding-top: 0px;
 		}
 	}
 }

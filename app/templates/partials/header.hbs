@@ -1,10 +1,10 @@
-<header id="appheader" class="appheader appheader--fixed">
+<header id="appheader" class="appheader">
   <div class="appheader-inner">
     {{#if backbutton}}
-    <a href="/work.html" class=""><i class="glyph ion-chevron-left"></i></a>
+      <a href="/work.html" id="brand" class=""><i class="glyph-back ion-ios-arrow-thin-left"></i></a>
     {{else}}
     <div class="myinfo">
-      <p class="name"><a id="brand" href="/">Joshua Pekera</a></p>
+      <p class="name"><a id="brand" href="/" ontouchstart="">Joshua Pekera</a></p>
       <p class="title">{{title}}</p>
     </div>
     {{/if}}
