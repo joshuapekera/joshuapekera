@@ -205,6 +205,8 @@ var reboundSlider = function () {
 		$(window).resize(function() {
 			springyCarousel.recalculateSize();
 			springyCarousel.layoutCaptions();
+			//springyCarousel.calculateNavWidth();
+			springyCarousel.navOffsetForIndex();
 		});
 	}
 };

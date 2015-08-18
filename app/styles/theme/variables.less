@@ -166,7 +166,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Neue Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif: 'Roboto', "Helvetica Neue","Neue Helvetica", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -189,10 +189,11 @@
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    "Neue Helvetica",'colfax-web', "Neue Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
-//@headings-font-family:    "colfax-web", "Neue Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//@headings-font-family:    "Helvetica Neue", "Neue Helvetica", Helvetica, Arial, sans-serif;
+//@headings-font-family:    "colfax-web", "Helvetica Neue", "Neue Helvetica", Helvetica, Arial, sans-serif;
+@headings-font-family: @font-family-sans-serif;
 //@headings-font-family: inherit;
-@headings-font-weight:    lighter;
+@headings-font-weight:    600;
 @headings-line-height:    1.5;
 @headings-color:          lighter;
 
@@ -436,6 +437,10 @@
 @screen-xs-max:              (@screen-sm-min - 1);
 @screen-sm-max:              (@screen-md-min - 1);
 @screen-md-max:              (@screen-lg-min - 1);
+
+// Devices Queries
+@ipad-min: 768px;
+@ipad-max: 1024px;
 
 
 //== Grid system

@@ -163,6 +163,7 @@
 		//declare public methods
 		this.layoutCaptions = funcs.layoutCaptions;
 		this.recalculateSize = funcs.recalculateSize;
+    this.navOffsetForIndex = funcs.navOffsetForIndex;
 		this.goToPage = funcs.selectTabIndex;
     this.resetCurrentPage = funcs.resetCurrentPage;
 		return this;
