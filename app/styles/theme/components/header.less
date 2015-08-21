@@ -178,6 +178,9 @@
 		width: @button-width-md;
 		border-radius: @button-border-radius;
 	}
+  @media only screen and (min-device-width : @ipad-min) and (max-device-width : @ipad-max) and (orientation : portrait) {
+    width: @button-width-md;
+  }
 	.dark & {
 		background: fade(@white, 60%);
 	}
@@ -197,6 +200,9 @@
 			width: @button-width-md;
 			border-radius: @button-border-radius;
 		}
+    @media only screen and (min-device-width : @ipad-min) and (max-device-width : @ipad-max) and (orientation : portrait) {
+    	width: @button-width-md;
+    }
 		.dark & {
 			background: fade(@white, 60%);
 		}
@@ -223,6 +229,9 @@
   .transform(scale(@button-toggled-size));
   @media (min-width: @screen-sm-min) {
     .transform(scale(@button-toggled-size-lg));
+  }
+  @media only screen and (min-device-width : @ipad-min) and (max-device-width : @ipad-max) and (orientation : portrait) {
+  	.transform(scale(@button-toggled-size-lg));
   }
 }
 

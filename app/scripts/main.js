@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	//'use strict';
+	//reboundSlider();
 	initPage();
 });
 // ------------------------------------ //
@@ -8,6 +9,7 @@ $(document).ready(function(){
 
 var site = {};
 var panVelocity = 0;
+var lastX = 0;
 var shiftDelay = 500;
 var transEndEventNames = {
 		'WebkitTransition': 'webkitTransitionEnd', // Saf 6, Android Browser
@@ -144,31 +146,6 @@ var toggleNavigation = function() {
 			body.removeClass('shifting');
 		});
 	});
-	
-	// nav.on(transEndEventName, function() {
-	// 	body.removeClass('shifting');
-	// 	if (body.hasClass('delay')) {
-	// 		setTimeout(function () {
-	// 			body.removeClass('delay');
-	// 		}, 500);
-	// 	}
-	// });
-	
-	// shiftIt.on('click', function() {
-	// 	body.addClass('shifting');
-	// 	setTimeout(function () {
-	// 		body.toggleClass('shift');
-	// 		navIcon.toggleClass('open');
-	// 	}, 16);
-	// 	// body.toggleClass('shift');
-	// 	// navIcon.toggleClass('open');
-	// 	// body.addClass('shifting');
-	// });
-	// container.on(transEndEventName, function() {
-	// 	setTimeout(function () {
-	// 		body.removeClass('shifting');
-	// 	}, 500);
-	// });
 };
 
 // ------------------------------------ //
@@ -194,18 +171,22 @@ var toggleDelay = function() {
 };
 
 // ------------------------------------ //
+// Init Rebound
+// -------------------------------------//
+var initRebound = function () {
+	rebound();
+};
+// ------------------------------------ //
 // Rebound Slider
 // -------------------------------------//
 var reboundSlider = function () {
-	if ($('#wrapper').length > 0) {
-		var springyCarousel = $('#wrapper').springyCarousel({
-			carouselTransitionComplete: function(spring, xTranslation) {}
-		});
-	
+	var wrapper = $('#wrapper');
+	//var springyCarousel = null;
+	if (wrapper.length > 0) {
+		var springyCarousel = wrapper.springyCarousel();
 		$(window).resize(function() {
 			springyCarousel.recalculateSize();
 			springyCarousel.layoutCaptions();
-			//springyCarousel.calculateNavWidth();
 			springyCarousel.navOffsetForIndex();
 		});
 	}
@@ -228,19 +209,24 @@ $(function() {
 	var $body = $('html, body');
 	var body = $('body');
 	var nav = $('#appnav');
+	var slider = $('#wrapper');
 	var loader = $('#loader');
 	var header = $('#appheader');
 	var navLink = $('#brand, #menu a');
+	var spring = rebound.SpringSystem;
 	var options = {
 		prefetch: true,
 		prefetchOn: 'mouseover',
-		cacheLength: 0,
+		cacheLength: 8,
 		loadingClass: 'is-loading',
 		blacklist: '.nss',
 		development: false,
 		// Runs before a page load has been started
 		onBefore: function($currentTarget, $container) {
-			
+			// if (rebound.Spring._ID > 0 && slider.length > 0) {
+			// 	var springyCarousel = slider.springyCarousel();
+			// 	springyCarousel.mainSpring.destroy();
+			// }
 		},
 		// Runs once a page load has been activated
 		onStart: {

@@ -5,17 +5,10 @@ body {
 }
 
 .app {
-	//overflow: auto;
 	height: auto;
 }
 
 .post {
-	// position: absolute;
-	// top: 0;
-	// bottom: 0;
-	// left: 0;
-	// right: 0;
-	//overflow-y: scroll;
 	.shift & {
 		overflow: hidden;
 	}
@@ -29,7 +22,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-	//transition: all 400ms linear;
 	z-index: @zindex-modal;
 }
 
@@ -43,18 +35,6 @@ body {
 	height: auto;
 	overflow: hidden;
 	background-color: @nav-bg;
-	//opacity: 1;
-	// .transition(~"background-color 0ms ease-in, opacity 0ms ease-in");
-	.is-exiting & {
-		//opacity: 1;
-	}
-	.shift & {
-		//opacity: 1;
-		// .transition(~"background-color 0ms ease-in, opacity 0ms ease-in");
-	}
-	.shifting & {
-		//opacity: 1;
-	}
 	.shift &, .shifting & {
 		.backdrop-blur(@backdrop-blur);// filter experiment
 		background-color: fade(@black, 90%);// filter
@@ -85,21 +65,15 @@ body {
 		overflow: hidden;
 	}
 	.post & {
-		//position: relative;
 	}
 	.shift--start & {
 		.scale3D(1, 1, 1);
 	}
 	.shift & {
-		//#shift > .right(); // show menu
-		//position: absolute;
-		//overflow-y: hidden;
 		overflow: hidden;
 	}
 	.shifting & {
-		//position: absolute;
 		overflow: hidden;
-		//overflow-y: hidden;
 	}
 	.zoom-overlay-open & {
 		.transform(none);
@@ -129,12 +103,10 @@ body {
 	right: 0;
 	left: 0;
 	width: 100%;
-	//height: 56px;
 	padding: 15px;
 	opacity: 1;
 	z-index: 47;
 	@media (min-width: @screen-sm-min) {
-		//height: 77px;
 		padding: 25px;
 	}
 	.is-exiting & {
@@ -156,6 +128,9 @@ body {
 			@media (min-width: @screen-sm-min){
 				background-color: fade(@white, 0%);
 				border-bottom: 1px solid fade(@black, 0%);
+			}
+			.delay & {
+				.transition-delay(100ms);
 			}
 			.shift &, .shifting & {
 				background-color: fade(@white, 0%);
@@ -199,8 +174,6 @@ article {
 		height: 100%;
 	}
 	.post & {
-		//min-height: 100vmin;// sticky footer
-		//min-height: 100%;
 		height: auto;
 		.shift & {
 			
@@ -212,10 +185,6 @@ article {
 }
 
 .content {
-	//position: relative;
-	// &:hover:after {
-  //   content:""; // force redraw
-	// }
 	.cover & {
 		position: absolute;
 		top: 0;
@@ -248,11 +217,8 @@ article {
 }
 
 .footer {
-	//position: relative;
 	border-top: 1px solid @footer-border;
 	.post & {
-		//position: absolute;
-		//bottom: 0;
 		width: 100%;
 		height: 80px;// fixed height for sticky footer
 		background-color: @footer-bg;
