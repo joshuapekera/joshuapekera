@@ -230,12 +230,20 @@ article.page {
 		h1, h2 {
 			margin-top: 60px;
 			font-weight: 100;
+			line-height: normal;
 		}
 		h2 {
-			font-size: 34pt;
+			font-size: 34px;
+			@media (min-width: @screen-sm-min) {
+				font-size: 48px;
+			}
 		}
 		h2 + p {
-			font-size: 16pt;
+			font-size: 18px;
+			padding: 10px 0;
+			@media (min-width: @screen-sm-min) {
+				font-size: 24px;
+			}
 		}
 		p {
 			color: #999999;

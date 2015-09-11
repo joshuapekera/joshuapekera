@@ -2,18 +2,19 @@
   "name": "joshuapekera-com",
   "private": true,
   "dependencies": {
-    "jquery": "~2.1.1",
-    "modernizr": "~2.8.2",
+    "bootstrap": "~3.3.4",
     "fastclick": "~1.0.6",
+    "fontawesome": "~4.3.0",
+    "headroom.js": "~0.7.0",
+    "ionicons": "~2.0.1",
+    "jquery": "~2.1.1",
+    "jquery.transit": "~0.9.12",
     "lazysizes": "~1.1.1",
+    "modernizr": "~2.8.2",
     "picturefill": "~3.0.0-alpha1",
     "rebound-js": "~0.0.10",
     "smoothstate": "~0.7.2",
-    "headroom.js": "~0.7.0",
-    "jquery.transit": "~0.9.12",
-    "fontawesome": "~4.3.0",
-    "bootstrap": "~3.3.4",
-    "ionicons": "~2.0.1"
+    "zoom.js": "~0.0.1"
   },
   "devDependencies": {
     "holderjs": "~2.7.1"
