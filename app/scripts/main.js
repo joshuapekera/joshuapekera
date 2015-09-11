@@ -74,7 +74,7 @@ var headroomInit = function() {
   	// or scroll tolerance per direction
   	tolerance : {
     	down : 0,
-    	up : 0
+    	up : 40
   	},
 		//scroller: $('#appcontent'),
 		// css classes to apple
